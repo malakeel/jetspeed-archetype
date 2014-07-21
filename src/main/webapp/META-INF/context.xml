@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<Context crossContext="true">
+
+	<Realm className="org.apache.catalina.realm.JAASRealm" appName="Jetspeed"
+		userClassNames="org.apache.jetspeed.security.impl.UserPrincipalImpl" roleClassNames="org.apache.jetspeed.security.impl.RolePrincipalImpl"
+		useContextClassLoader="true" debug="0" />
+
+
+	<Resource name="jdbc/jetspeed" auth="Container" factory="org.apache.commons.dbcp.BasicDataSourceFactory" type="javax.sql.DataSource"
+		username="postgres" password="postgres" driverClassName="org.postgresql.Driver" url="jdbc:postgresql://localhost/jetspeed2"
+		maxActive="100" maxIdle="30" maxWait="10000" />
+
+	<Valve className="org.apache.catalina.authenticator.FormAuthenticator" characterEncoding="UTF-8" />
+
+</Context>
+
+

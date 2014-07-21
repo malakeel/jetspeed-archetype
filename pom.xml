@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.apache.portals.tutorials</groupId>
+	<artifactId>jetexpress-portal</artifactId>
+	<name>Jetexpress Portal</name>
+	<version>1.0</version>
+	<packaging>war</packaging>
+
+	<properties>
+		<org.apache.portals.jetspeed.version>2.2.2</org.apache.portals.jetspeed.version>
+		<!-- <org.apache.portals.jetspeed.version>2.3.0-SNAPSHOT</org.apache.portals.jetspeed.version> -->
+		<org.apache.pluto.version>2.0.3</org.apache.pluto.version>
+		<org.apache.portals.applications.apa-logging.version>1.0</org.apache.portals.applications.apa-logging.version>
+		<ccpp.version>1.0</ccpp.version>
+		<org.apache.portals.bridges.common.version>2.0</org.apache.portals.bridges.common.version>
+		<geronimo-servlet_2.4_spec.version>1.1.1</geronimo-servlet_2.4_spec.version>
+		<portals.portlet2-api-spec.version>1.0</portals.portlet2-api-spec.version>
+		<javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
+		<portal.context.name>jetspeed</portal.context.name>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.portals.jetspeed-2</groupId>
+			<artifactId>jetspeed-dependencies</artifactId>
+			<version>${org.apache.portals.jetspeed.version}</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.portals.jetspeed-2</groupId>
+			<artifactId>jetspeed</artifactId>
+			<version>${org.apache.portals.jetspeed.version}</version>
+			<type>war</type>
+			<!-- <optional>true</optional> -->
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.portals.pluto</groupId>
+			<artifactId>pluto-container-api</artifactId>
+			<version>${org.apache.pluto.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- FROM HERE DEP that should not go with the WAR for tomcat -->
+		<!-- TO deploy on tomcat comment out all the following dependencies -->
+		<!-- TODO use a classifier or other means for either war/wab -->
+		<dependency>
+			<groupId>org.apache.portals.jetspeed-2</groupId>
+			<artifactId>jetspeed-api</artifactId>
+			<version>${org.apache.portals.jetspeed.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.portals.jetspeed-2</groupId>
+			<artifactId>jetspeed-commons</artifactId>
+			<version>${org.apache.portals.jetspeed.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.portals.bridges</groupId>
+			<artifactId>portals-bridges-common</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>xml-resolver</groupId>
+			<artifactId>xml-resolver</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.3-1100-jdbc41</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.ccpp</groupId>
+			<artifactId>ccpp</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- <dependency> -->
+		<!-- <groupId>javax.portlet</groupId> -->
+		<!-- <artifactId>portlet-api</artifactId> -->
+		<!-- <version>2.0-r12</version> -->
+		<!-- <scope>provided</scope> -->
+		<!-- </dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.portals.jetspeed-2</groupId> -->
+		<!-- <artifactId>jetspeed-portal</artifactId> -->
+		<!-- <version>${org.apache.portals.jetspeed.version}</version> -->
+		<!-- </dependency> -->
+	</dependencies>
+
+	<build>
+		<outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.apache.portals.jetspeed-2</groupId>
+									<artifactId>j2-admin</artifactId>
+									<version>${org.apache.portals.jetspeed.version}</version>
+									<type>war</type>
+									<outputDirectory>${project.build.outputDirectory}/WEB-INF/deploy</outputDirectory>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.apache.portals.jetspeed-2</groupId>
+									<artifactId>jetspeed-layouts</artifactId>
+									<version>${org.apache.portals.jetspeed.version}</version>
+									<type>war</type>
+									<outputDirectory>${project.build.outputDirectory}/WEB-INF/deploy/local</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+							<stripVersion>true</stripVersion>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.3.7</version>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>bundle-manifest</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>manifest</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<unpackBundle>false</unpackBundle>
+					<excludeDependencies>*;type=!jar</excludeDependencies>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Embed-Transitive>true</Embed-Transitive>
+						<Embed-Directory>WEB-INF/lib</Embed-Directory>
+						<Web-ContextPath>jetspeed</Web-ContextPath>
+						<Embed-Dependency>
+							*;scope=compile|provided,
+							jetspeed-api,
+							portlet-api
+						</Embed-Dependency>
+						<Import-Package>
+							!antlr*,
+							!bsh,
+							!com.caucho.*,
+							!com.ibatis.*,
+							!com.ibm.wsspi*,
+							!com.jamonapi*,
+							!com.mchange.v2.*,
+							!com.mockrunner*,
+							!com.sun.enterprise.loader*,
+							!com.sun.jdmk.* ,
+							!com.sun.jdori* ,
+							!com.sun.jndi.ldap*,
+							!com.sun.msv.* ,
+							!com.sun.net.httpserver,
+							!com.sun.org.apache.xml.internal.serialize,
+							!com.sun.rowset,
+							!com.sun.xml.fastinfoset*,
+							!com.sun.javadoc* ,
+							!com.sun.tools* ,
+							!com.werken.xpath,
+							!com.xerox.amazonws.ec2,
+							!commonj.timers,
+							!commonj.work,
+							!edu.emory.mathcs.backport.java.util.concurrent,
+							!electric.xml,
+							!freemarker.cache,
+							!freemarker.template,
+							!groovy.lang,
+							!javassist,
+							!javassist.bytecode,
+							!javax.crypto,
+							!javax.crypto.interfaces,
+							!javax.crypto.spec,
+							!javax.ejb,
+							!javax.el,
+							!javax.faces.application,
+							!javax.faces.context,
+							!javax.faces.el,
+							!javax.faces.event,
+							!javax.imageio,
+							!javax.imageio.metadata,
+							!javax.imageio.stream,
+							!javax.interceptor,
+							!javax.jdo,
+							!javax.jdo.datastore,
+							!javax.jdo.spi,
+							!javax.jms,
+							!javax.management,
+							!javax.management.modelmbean,
+							!javax.management.openmbean,
+							!javax.management.remote,
+							!javax.naming,
+							!javax.naming.directory,
+							!javax.naming.ldap,
+							!javax.naming.spi,
+							!javax.net,
+							!javax.net.ssl,
+							!javax.persistence,
+							!javax.persistence.spi,
+							!javax.resource.*,
+							!org.apache.abdera*,
+							!org.apache.axiom*,
+							!org.apache.crimson*,
+							!javax.rmi,
+							!javax.rmi.CORBA,
+							!javax.sql,
+							!javax.sql.rowset,
+							!javax.swing*,
+							!net.sf.cglib.asm,
+							!net.sf.jasperreports.engine*,
+							!netscape.ldap,
+							!oracle.classloader.util,
+							!oracle.toplink.*,
+							!oracle.xml.parser*,
+							!org.apache.avalon.framework.logger,
+							!org.apache.axis.encoding.ser,
+							!org.apache.bcel.classfile,
+							!org.apache.bcel.generic,
+							!org.apache.bcel.util,
+							!org.apache.commons.attributes,
+							!org.apache.commons.jxpath,
+							!org.apache.commons.jxpath.ri,
+							!org.apache.commons.jxpath.ri.compiler,
+							!org.apache.commons.jxpath.ri.model,
+							!org.apache.commons.transaction.locking,
+							!org.apache.commons.transaction.util,
+							!org.apache.directory.server.configuration,
+							!org.apache.directory.server.core.configuration,
+							!org.apache.directory.server.core.partition.impl.btree,
+							!org.apache.directory.server.core.schema.bootstrap,
+							!org.apache.directory.server.jndi,
+							!org.apache.directory.server.protocol.shared.store,
+							!org.apache.jcs,
+							!org.apache.jcs.access.exception,
+							!org.apache.log,
+							!org.apache.log.format,
+							!org.apache.log.output.io,
+							!org.apache.openjpa.persistence,
+							!org.apache.struts.*,
+							!org.apache.tools.ant,
+							!org.apache.tools.ant.taskdefs,
+							!org.apache.tools.ant.types,
+							!org.apache.torque.task,
+							!org.apache.xerces.*,
+							!org.aspectj.*,
+							!org.bouncycastle.asn1,
+							!org.codehaus.aspectwerkz.hook,
+							!org.codehaus.groovy.control,
+							!org.eclipse.*,
+							!org.enhydra.jdbc.core,
+							!org.gjt.xpp,
+							!org.hibernate*,
+							!org.jaxen.saxpath,
+							!org.jruby*,
+							!org.jvnet.fastinfoset,
+							!org.jvnet.staxex,
+							!org.mortbay.*,
+							!org.objectweb.asm.attrs,
+							!org.objectweb.asm.util,
+							!org.objectweb.jotm,
+							!org.omg.CORBA,
+							!org.omg.CORBA.portable,
+							!org.omg.CORBA_2_3.portable,
+							!org.quartz,
+							!org.quartz.impl,
+							!org.quartz.impl.jdbcjobstore,
+							!org.quartz.simpl,
+							!org.quartz.spi,
+							!org.quartz.utils,
+							!org.quartz.xml,
+							!org.relaxng.datatype,
+							!org.saxpath,
+							!org.saxpath.helpers,
+							!org.springframework.instrument,
+							!org.xmlpull.v1,
+							!sun.io,
+							!sun.security.util,
+							!tyrex.naming,
+							!tyrex.tm,
+							!weblogic.apache.xml.serialize,
+							!com.fasterxml*,
+							!com.ibm.uvm*,
+							!com.sun.syndication* ,
+
+							*
+						</Import-Package>
+						<!-- <Export-Package> -->
+						<!-- org.apache.jetspeed.login.*, -->
+						<!-- * -->
+						<!-- </Export-Package> -->
+					</instructions>
+					<supportedProjectTypes>
+						<supportedProjectType>jar</supportedProjectType>
+						<supportedProjectType>war</supportedProjectType>
+						<supportedProjectType>bundle</supportedProjectType>
+					</supportedProjectTypes>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<!-- <outputDirectory>/home/mansour/workspace/apache-karaf-4.0.0-SNAPSHOT/deploy</outputDirectory> -->
+					<warName>jetspeed</warName>
+					<archive>
+						<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+					</archive>
+					<overlays>
+						<overlay>
+							<id>jetspeed</id>
+							<groupId>org.apache.portals.jetspeed-2</groupId>
+							<artifactId>jetspeed</artifactId>
+							<excludes>
+								<exclude>WEB-INF/pages/**</exclude>
+								<exclude>WEB-INF/min-pages/**</exclude>
+								<exclude>WEB-INF/ui-pages/**</exclude>
+								<exclude>WEB-INF/min-ui-pages/</exclude>
+								<exclude>META-INF/MANIFEST.MF</exclude>
+								<!-- <exclude>WEB-INF/conf/jetspeed.properties</exclude> -->
+								<!-- <exclude>WEB-INF/lib/*.jar</exclude> -->
+								<!-- <exclude>WEB-INF/classes/log4j.xml</exclude> -->
+							</excludes>
+						</overlay>
+					</overlays>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+		<pluginManagement>
+
+			<plugins>
+
+
+
+			</plugins>
+
+		</pluginManagement>
+	</build>
+
+
+
+</project>
