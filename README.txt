@@ -10,7 +10,7 @@ install mvn:javax.portlet/portlet-api/2.0
 
 To build this project :
 
-$ mvn clean package 
+$ mvn -P osgi clean package 
 
 copy the resulting war file to KARAF_HOME/deploy
 
