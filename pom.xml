@@ -6,7 +6,7 @@
 
 	<groupId>org.apache.portals.tutorials</groupId>
 	<artifactId>jetexpress2.3-portal</artifactId>
-	<name>jetexpress2.3 portal</name>
+	<name>jetexpress custom portal</name>
 	<version>1.0-SNAPSHOT</version>
 
 	<packaging>war</packaging>
@@ -40,6 +40,20 @@
 			<artifactId>jetspeed-dependencies</artifactId>
 			<version>${org.apache.portals.jetspeed.version}</version>
 			<type>pom</type>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-ext</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jstl</artifactId>
+					<groupId>javax.servlet</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.portals.jetspeed-2</groupId>
@@ -47,101 +61,57 @@
 			<version>${org.apache.portals.jetspeed.version}</version>
 			<type>war</type>
 		</dependency>
+
 		<dependency>
 			<groupId>org.apache.portals.pluto</groupId>
 			<artifactId>pluto-container-api</artifactId>
 			<version>${org.apache.pluto.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.portals.jetspeed-2</groupId>
+			<artifactId>jetspeed-portal-resources</artifactId>
+			<version>${org.apache.portals.jetspeed.version}</version>
+			<type>jar</type>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
+		<!-- <outputDirectory>/opt/tomcat/webapps/jetspeed</outputDirectory> -->
+		<outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
+		<!-- <outputDirectory>/home/mansour/workspace/apache-karaf-4.0.0-SNAPSHOT/deploy/${project.build.finalName}</outputDirectory> -->
+
 		<plugins>
 			<plugin>
-				<groupId>org.apache.portals.jetspeed-2</groupId>
-				<artifactId>jetspeed-unpack-maven-plugin</artifactId>
-				<version>${org.apache.portals.jetspeed.version}</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>unpack-jetspeed-properties</id>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<phase>generate-resources</phase>
-						<configuration>
-							<unpack>
-								<artifact>org.apache.portals.jetspeed-2:jetspeed-portal-resources:jar</artifact>
-								<targetDirectory>${project.build.directory}/${project.build.finalName}</targetDirectory>
-								<resources>
-									<resource>
-										<path>conf/jetspeed</path>
-										<include>jetspeed.properties</include>
-										<destination>WEB-INF/conf</destination>
-									</resource>
-								</resources>
-							</unpack>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.portals.jetspeed-2</groupId>
-						<artifactId>jetspeed-portal-resources</artifactId>
-						<version>${org.apache.portals.jetspeed.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.portals.jetspeed-2</groupId>
-				<artifactId>jetspeed-deploy-maven-plugin</artifactId>
-				<version>${org.apache.portals.jetspeed.version}</version>
-				<executions>
-					<execution>
-						<id>deploy-jetspeed-layouts</id>
-						<goals>
-							<goal>deploy</goal>
-						</goals>
+						<id>copy-wars</id>
 						<phase>process-resources</phase>
-						<configuration>
-							<targetBaseDir>${project.build.directory}/${project.build.finalName}</targetBaseDir>
-							<destinations>
-								<local>WEB-INF/deploy/local</local>
-							</destinations>
-							<deployments>
-								<deployment>
-									<artifact>org.apache.portals.jetspeed-2:jetspeed-layouts:war</artifact>
-									<destination>local</destination>
-								</deployment>
-							</deployments>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.portals.jetspeed-2</groupId>
-						<artifactId>jetspeed-layouts</artifactId>
-						<version>${org.apache.portals.jetspeed.version}</version>
-						<type>war</type>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.portals.jetspeed-2</groupId>
-				<artifactId>jetspeed-fileutils-maven-plugin</artifactId>
-				<version>${org.apache.portals.jetspeed.version}</version>
-				<executions>
-					<execution>
-						<id>configure-jetspeed-properties</id>
 						<goals>
-							<goal>event</goal>
+							<goal>copy</goal>
 						</goals>
-						<phase>process-resources</phase>
 						<configuration>
-							<srcFilePath>${project.build.directory}/${project.build.finalName}/WEB-INF/conf/jetspeed.properties</srcFilePath>
-							<editPattern>^jetui.customization.method%5Cs*=.*%24</editPattern><!-- use %24 for '$' and %5C for '\' -->
-							<replacePattern>jetui.customization.method%20=%20ajax</replacePattern><!-- use %20 for space -->
-							<event>edit</event>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.apache.portals.jetspeed-2</groupId>
+									<artifactId>j2-admin</artifactId>
+									<version>${org.apache.portals.jetspeed.version}</version>
+									<type>war</type>
+									<outputDirectory>${project.build.outputDirectory}/WEB-INF/deploy</outputDirectory>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.apache.portals.jetspeed-2</groupId>
+									<artifactId>jetspeed-layouts</artifactId>
+									<version>${org.apache.portals.jetspeed.version}</version>
+									<type>war</type>
+									<outputDirectory>${project.build.outputDirectory}/WEB-INF/deploy/local</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+							<stripVersion>true</stripVersion>
 						</configuration>
 					</execution>
 				</executions>
@@ -149,32 +119,100 @@
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<warName>jetspeed</warName>
-					<overlays>
-						<overlay>
-							<id>jetspeed</id>
-							<groupId>org.apache.portals.jetspeed-2</groupId>
-							<artifactId>jetspeed</artifactId>
-							<excludes>
-								<exclude>WEB-INF/pages/**</exclude>
-								<exclude>WEB-INF/min-pages/**</exclude>
-								<exclude>WEB-INF/ui-pages/**</exclude>
-								<exclude>WEB-INF/min-ui-pages/**</exclude>
-								<exclude>WEB-INF/conf/jetspeed.properties</exclude>
-							</excludes>
-						</overlay>
-					</overlays>
-				</configuration>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>extract-config</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<tasks>
+								<property name="js2.resources.jar" value="${org.apache.portals.jetspeed-2:jetspeed-portal-resources:jar}" />
+								<unzip src="${js2.resources.jar}" dest="${project.build.outputDirectory}/WEB-INF/conf">
+									<patternset>
+										<include name="conf/jetspeed/jetspeed.properties" />
+									</patternset>
+									<mapper type="flatten" />
+								</unzip>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
+
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.portals.jetspeed-2</groupId> -->
+			<!-- <artifactId>jetspeed-fileutils-maven-plugin</artifactId> -->
+			<!-- <version>${org.apache.portals.jetspeed.version}</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>configure-jetspeed-properties</id> -->
+			<!-- <goals> -->
+			<!-- <goal>event</goal> -->
+			<!-- </goals> -->
+			<!-- <phase>process-resources</phase> -->
+			<!-- <configuration> -->
+			<!-- <srcFilePath>${project.build.directory}/${project.build.finalName}/WEB-INF/conf/jetspeed.properties</srcFilePath> -->
+			<!-- <editPattern>^jetui.customization.method%5Cs*=.*%24</editPattern>use %24 for '$' and %5C for '\' -->
+			<!-- <replacePattern>jetui.customization.method%20=%20ajax</replacePattern>use %20 for space -->
+			<!-- <event>edit</event> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.4</version>
+					<!-- <executions> -->
+					<!-- <execution> -->
+					<!-- <id>create-war</id> -->
+					<!-- <phase>package</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>manifest</goal> -->
+					<!-- </goals> -->
+					<!-- </execution> -->
+					<!-- </executions> -->
+					<configuration>
+						<warName>jetspeed</warName>
+						<webappDirectory>${project.build.outputDirectory}</webappDirectory>
+						<archive>
+							<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+						</archive>
+						<overlays>
+							<overlay>
+								<id>jetspeed</id>
+								<groupId>org.apache.portals.jetspeed-2</groupId>
+								<artifactId>jetspeed</artifactId>
+								<excludes>
+									<exclude>META-INF/MANIFEST.MF</exclude>
+									<exclude>WEB-INF/pages/**</exclude>
+									<exclude>WEB-INF/min-pages/**</exclude>
+									<exclude>WEB-INF/ui-pages/**</exclude>
+									<exclude>WEB-INF/min-ui-pages/</exclude>
+									<exclude>WEB-INF/conf/jetspeed.properties</exclude>
+									<exclude>WEB-INF/lib/*.jar</exclude>
+									<!-- <exclude>WEB-INF/classes/log4j.xml</exclude> -->
+								</excludes>
+							</overlay>
+						</overlays>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 
 	<profiles>
 		<profile>
-			<id>OSGI</id>
+			<id>osgi</id>
 			<dependencies>
 				<!-- TODO: REVIEW THIS. Use this or portlet-api_2.0_spec-1.0 -->
 				<dependency>
@@ -211,7 +249,6 @@
 					<version>${org.apache.pluto.version}</version>
 				</dependency>
 
-
 				<dependency>
 					<groupId>org.apache.portals.jetspeed-2</groupId>
 					<artifactId>jetspeed-api</artifactId>
@@ -236,7 +273,16 @@
 					<version>1.0</version>
 				</dependency>
 
+
+
+				<dependency>
+					<groupId>org.postgresql</groupId>
+					<artifactId>postgresql</artifactId>
+					<version>9.3-1100-jdbc41</version>
+				</dependency>
+
 			</dependencies>
+
 			<build>
 				<plugins>
 					<plugin>
@@ -247,7 +293,7 @@
 						<executions>
 							<execution>
 								<id>bundle-manifest</id>
-								<phase>process-resources</phase>
+								<phase>process-classes</phase>
 								<goals>
 									<goal>manifest</goal>
 								</goals>
@@ -263,12 +309,156 @@
 								<Embed-Directory>WEB-INF/lib</Embed-Directory>
 								<Web-ContextPath>jetspeed</Web-ContextPath>
 								<Embed-Dependency>
-									*;scope=compile|provided,
-									jetspeed-api,
-									portlet-api
+									*;scope=compile,
+									!slf4j-ext,
 								</Embed-Dependency>
 								<Import-Package>
+									org.slf4j,
+									!antlr*,
+									!bsh,
+									!com.caucho.*,
+									!com.ibatis.*,
+									!com.ibm.wsspi*,
+									!com.jamonapi*,
+									!com.mchange.v2.*,
+									!com.mockrunner*,
+									!com.sun.enterprise.loader*,
+									!com.sun.jdmk.* ,
+									!com.sun.jdori* ,
+									!com.sun.jndi.ldap*,
+									!com.sun.msv.* ,
+									!com.sun.net.httpserver,
+									!com.sun.org.apache.xml.internal.serialize,
+									!com.sun.rowset,
+									!com.sun.xml.fastinfoset*,
+									!com.sun.javadoc* ,
+									!com.sun.tools* ,
+									!com.werken.xpath,
+									!com.xerox.amazonws.ec2,
+									!commonj.*,
+									!edu.emory.mathcs.backport.java.util.concurrent,
+									!electric.xml,
+									!freemarker.*,
+									!groovy.lang,
+									!javassist*,
+									!javax.cache*,
+									!javax.crypto*,
+									!javax.ejb,
+									!javax.el,
+									!javax.inject,
+									!javax.faces.*,
+									!javax.jmdns*,
+									!javax.imageio,
+									!javax.imageio.metadata,
+									!javax.imageio.stream,
+									!javax.interceptor,
+									!javax.jdo*,
+									!javax.jms,
+									!javax.management,
+									!javax.management.modelmbean,
+									!javax.management.openmbean,
+									!javax.management.remote,
+									!javax.naming*,
+									!javax.net*,
+									!javax.persistence*,
+									!javax.resource.*,
+									!javax.validation*,
+									!org.apache.abdera*,
+									!org.apache.axiom*,
+									!org.apache.crimson*,
+									!org.apache.xml.*,
+									!javax.rmi,
+									!javax.rmi.CORBA,
+									!javax.swing*,
+									!joptsimple,
+									!net.sf.cglib.asm,
+									!net.sf.jasperreports.engine*,
+									!netscape.ldap,
+									!oracle.classloader.util,
+									!oracle.toplink.*,
+									!oracle.xml.parser*,
+									!org.apache.avalon.framework.logger,
+									!org.apache.axis.encoding.ser,
+									!org.apache.bcel.classfile,
+									!org.apache.bcel.generic,
+									!org.apache.bcel.util,
+									!org.apache.commons.attributes,
+									!org.apache.commons.jexl2*,
+									!org.apache.commons.jxpath,
+									!org.apache.commons.jxpath.ri,
+									!org.apache.commons.jxpath.ri.compiler,
+									!org.apache.commons.jxpath.ri.model,
+									!org.apache.commons.transaction.locking,
+									!org.apache.commons.vfs2*,
+									!org.apache.commons.transaction.util,
+									!org.apache.cxf*,
+									!org.apache.derby*,
+									!org.apache.jackrabbit.*,
+									!org.codehaus.jackson*,
+									!org.apache.directory.server.*,
+									!org.apache.jcs,
+									!org.apache.jcs.access.exception,
+									!org.apache.log,
+									!org.apache.log.format,
+									!org.apache.log.output.io,
+									!org.apache.openjpa.persistence,
+									!org.apache.struts.*,
+									!org.apache.tools.ant,
+									!org.apache.tools.ant.taskdefs,
+									!org.apache.tools.ant.types,
+									!org.apache.torque.task,
+									!org.apache.xerces.*,
+									!org.aspectj.*,
+									!org.bouncycastle.asn1,
+									!org.codehaus.aspectwerkz.hook,
+									!org.codehaus.groovy.control,
+									!org.eclipse.*,
+									!org.enhydra.jdbc.core,
+									!org.gjt.xpp,
+									!org.hibernate*,
+									!org.jaxen.saxpath,
+									!org.jruby*,
+									!org.jvnet.fastinfoset,
+									!org.jvnet.staxex,
+									!org.mortbay.*,
+									!org.objectweb.asm.*,
+									!org.objectweb.jotm,
+									!org.omg.*,
+									!org.quartz*,
+									!org.relaxng.datatype,
+									!org.saxpath,
+									!org.saxpath.helpers,
+									!org.springframework.instrument,
+									!org.xmlpull.v1,
+									!sun.io,
+									!sun.security.util,
+									!tyrex.naming,
+									!tyrex.tm,
+									!weblogic.apache.xml.serialize,
+									!com.fasterxml*,
+									!com.ibm.uvm*,
+									!com.sun.syndication* ,
+									!org.joda.*,
+									!org.junit*,
+									!org.slf4j.ext*,
+									!org.slf4j.impl*,
+									!org.springframework.asm.*,
+									!org.springframework.oxm*,
+
+
+									*
 								</Import-Package>
+								<Export-Package>
+									org.apache.jetspeed.engine,
+									org.apache.jetspeed.login,
+									org.apache.jetspeed.manager,
+
+
+									org.apache.jetspeed.util,
+									org.apache.jetspeed.engine.servlet,
+									org.apache.jetspeed.container.session
+
+								</Export-Package>
 							</instructions>
 							<supportedProjectTypes>
 								<supportedProjectType>jar</supportedProjectType>
@@ -276,6 +466,8 @@
 								<supportedProjectType>bundle</supportedProjectType>
 							</supportedProjectTypes>
 						</configuration>
+
+
 					</plugin>
 				</plugins>
 			</build>
@@ -284,7 +476,6 @@
 
 		<profile>
 			<id>shared-libs</id>
-
 			<build>
 				<plugins>
 					<plugin>
