@@ -13,5 +13,3 @@
 	<Valve className="org.apache.catalina.authenticator.FormAuthenticator" characterEncoding="UTF-8" />
 
 </Context>
-
-
