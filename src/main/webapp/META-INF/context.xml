@@ -5,10 +5,13 @@
 		userClassNames="org.apache.jetspeed.security.impl.UserPrincipalImpl" roleClassNames="org.apache.jetspeed.security.impl.RolePrincipalImpl"
 		useContextClassLoader="true" debug="0" />
 
+	<!-- <Resource name="jdbc/jetspeed" auth="Container" factory="org.apache.commons.dbcp.BasicDataSourceFactory" type="javax.sql.DataSource" -->
+	<!-- driverClassName="org.postgresql.Driver" url="jdbc:postgresql://localhost/jetspeed2" username="postgres" password="postgres" -->
+	<!-- maxActive="100" maxIdle="30" maxWait="10000" /> -->
 
 	<Resource name="jdbc/jetspeed" auth="Container" factory="org.apache.commons.dbcp.BasicDataSourceFactory" type="javax.sql.DataSource"
-		username="postgres" password="postgres" driverClassName="org.postgresql.Driver" url="jdbc:postgresql://localhost/jetspeed2"
-		maxActive="100" maxIdle="30" maxWait="10000" />
+		driverClassName="${jetspeed.jdbc.driverClassName}" url="${jetspeed.jdbc.url}" username="${jetspeed.jdbc.username}"
+		password="${jetspeed.jdbc.password}" maxActive="100" maxIdle="30" maxWait="10000" />
 
 	<Valve className="org.apache.catalina.authenticator.FormAuthenticator" characterEncoding="UTF-8" />
 
