@@ -385,6 +385,8 @@
 				</executions>
 			</plugin>
 
+			<!-- REMOVE THIS ??? MAY BE !! -->
+			<!-- PUT jetspeed.properties in the parent WAR with acceptable default configuration -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
@@ -411,74 +413,6 @@
 				</executions>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<id>install-db</id>
-						<phase>process-classes</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-
-							<target name="database-setup" description="Creates the database structure and inserts data into the database">
-
-								<path id="classpath">
-									<path refid="maven.plugin.classpath" />
-									<path refid="maven.runtime.classpath" />
-								</path>
-
-								<property name="compile_classpath" refid="classpath" />
-
-								<taskdef name="ddlToDatabase" classname="org.apache.ddlutils.task.DdlToDatabaseTask">
-									<classpath refid="classpath" />
-								</taskdef>
-
-								<ddlToDatabase>
-									<database driverClassName="${jetspeed.jdbc.driverClassName}" url="${jetspeed.jdbc.url}" username="${jetspeed.jdbc.username}"
-										password="${jetspeed.jdbc.password}" />
-									<fileset dir="src/sql/">
-										<include name="schema.xml" />
-									</fileset>
-									<createDatabase failonerror="true" />
-									<writeSchemaToDatabase />
-									<writeDataToDatabase datafile="src/sql/seeds/generated-data-min-jetui.xml" />
-								</ddlToDatabase>
-
-								<!-- <taskdef name="databaseToDdl" classname="org.apache.ddlutils.task.DatabaseToDdlTask"> -->
-								<!-- <classpath refid="classpath" /> -->
-								<!-- </taskdef> -->
-								<!-- <databaseToDdl modelName="MyModel"> -->
-								<!-- <database driverClassName="${jetspeed.jdbc.driverClassName}" url="${jetspeed.jdbc.url}" username="${jetspeed.jdbc.username}" -->
-								<!-- password="${jetspeed.jdbc.password}" /> -->
-								<!-- <writeSchemaToFile outputFile="generated-db-schema.xml" /> -->
-								<!-- <writeDataToFile outputFile="generated-data-min-jetui.xml" /> -->
-								<!-- </databaseToDdl> -->
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.ddlutils</groupId>
-						<artifactId>ddlutils</artifactId>
-						<version>1.0</version>
-					</dependency>
-					<dependency>
-						<groupId>log4j</groupId>
-						<artifactId>log4j</artifactId>
-						<version>1.2.17</version>
-					</dependency>
-					<dependency>
-						<groupId>org.postgresql</groupId>
-						<artifactId>postgresql</artifactId>
-						<version>9.3-1100-jdbc41</version>
-					</dependency>
-				</dependencies>
-			</plugin>
 
 
 			<plugin>
@@ -492,6 +426,7 @@
 					<systemProperties>
 						<org.apache.portals.logdir>${project.build.directory}/logs.dir</org.apache.portals.logdir>
 					</systemProperties>
+					
 				</configuration>
 
 				<dependencies>
@@ -871,7 +806,7 @@
 										<!-- <version>1.0</version> -->
 										<!-- </artifactItem> -->
 									</artifactItems>
-									<outputDirectory>${jetspeed.tomcat.shared.libs}</outputDirectory>
+									<outputDirectory>${jetspeed.tomcat.shared.lib}</outputDirectory>
 									<overWriteReleases>false</overWriteReleases>
 									<overWriteSnapshots>false</overWriteSnapshots>
 									<overWriteIfNewer>true</overWriteIfNewer>
@@ -882,6 +817,85 @@
 						</executions>
 					</plugin>
 				</plugins>
+			</build>
+		</profile>
+
+		<profile>
+			<id>db</id>
+			<build>
+				<plugins>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.7</version>
+						<executions>
+							<execution>
+								<id>install-db</id>
+								<phase>process-classes</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+
+									<target name="database-setup" description="Creates the database structure and inserts data into the database">
+
+										<path id="classpath">
+											<path refid="maven.plugin.classpath" />
+											<path refid="maven.runtime.classpath" />
+										</path>
+
+										<property name="compile_classpath" refid="classpath" />
+
+										<taskdef name="ddlToDatabase" classname="org.apache.ddlutils.task.DdlToDatabaseTask">
+											<classpath refid="classpath" />
+										</taskdef>
+
+										<ddlToDatabase>
+											<database driverClassName="${jetspeed.jdbc.driverClassName}" url="${jetspeed.jdbc.url}" username="${jetspeed.jdbc.username}"
+												password="${jetspeed.jdbc.password}" />
+											<fileset dir="src/sql/">
+												<include name="schema.xml" />
+											</fileset>
+											<createDatabase failonerror="true" />
+											<writeSchemaToDatabase />
+											<writeDataToDatabase datafile="src/sql/seeds/generated-data-min-jetui.xml" />
+										</ddlToDatabase>
+
+										<!-- <taskdef name="databaseToDdl" classname="org.apache.ddlutils.task.DatabaseToDdlTask"> -->
+										<!-- <classpath refid="classpath" /> -->
+										<!-- </taskdef> -->
+										<!-- <databaseToDdl modelName="MyModel"> -->
+										<!-- <database driverClassName="${jetspeed.jdbc.driverClassName}" url="${jetspeed.jdbc.url}" username="${jetspeed.jdbc.username}" -->
+										<!-- password="${jetspeed.jdbc.password}" /> -->
+										<!-- <writeSchemaToFile outputFile="generated-db-schema.xml" /> -->
+										<!-- <writeDataToFile outputFile="generated-data-min-jetui.xml" /> -->
+										<!-- </databaseToDdl> -->
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>org.apache.ddlutils</groupId>
+								<artifactId>ddlutils</artifactId>
+								<version>1.0</version>
+							</dependency>
+							<dependency>
+								<groupId>log4j</groupId>
+								<artifactId>log4j</artifactId>
+								<version>1.2.17</version>
+							</dependency>
+							<dependency>
+								<groupId>org.postgresql</groupId>
+								<artifactId>postgresql</artifactId>
+								<version>9.3-1100-jdbc41</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+
+				</plugins>
+
 			</build>
 		</profile>
 	</profiles>
