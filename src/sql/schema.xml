@@ -1,0 +1,1138 @@
+<?xml version="1.0"?>
+<!DOCTYPE database SYSTEM "http://db.apache.org/torque/dtd/database">
+  <database name="Jetspeed2_Model">
+    <table name="admin_activity">
+      <column name="activity" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="category" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="admin" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="user_name" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="time_stamp" primaryKey="false" required="false" type="TIMESTAMP" size="29,6" autoIncrement="false"/>
+      <column name="ipaddress" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="attr_name" primaryKey="false" required="false" type="VARCHAR" size="200" autoIncrement="false"/>
+      <column name="attr_value_before" primaryKey="false" required="false" type="VARCHAR" size="1000" autoIncrement="false"/>
+      <column name="attr_value_after" primaryKey="false" required="false" type="VARCHAR" size="1000" autoIncrement="false"/>
+      <column name="description" primaryKey="false" required="false" type="VARCHAR" size="128" autoIncrement="false"/>
+    </table>
+    <table name="capability">
+      <column name="capability_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="capability" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+    </table>
+    <table name="client">
+      <column name="client_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="eval_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="user_agent_pattern" primaryKey="false" required="false" type="VARCHAR" size="128" autoIncrement="false"/>
+      <column name="manufacturer" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="model" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="version" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="preferred_mimetype_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+    </table>
+    <table name="client_to_capability">
+      <column name="client_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="capability_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+    </table>
+    <table name="client_to_mimetype">
+      <column name="client_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="mimetype_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+    </table>
+    <table name="clubs">
+      <column name="name" primaryKey="true" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="country" primaryKey="false" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="city" primaryKey="false" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="stadium" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="capacity" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="founded" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="pitch" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="nickname" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+    </table>
+    <table name="custom_portlet_mode">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="custom_name" primaryKey="false" required="true" type="VARCHAR" size="150" autoIncrement="false"/>
+      <column name="mapped_name" primaryKey="false" required="false" type="VARCHAR" size="150" autoIncrement="false"/>
+      <column name="portal_managed" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+    </table>
+    <table name="custom_window_state">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="custom_name" primaryKey="false" required="true" type="VARCHAR" size="150" autoIncrement="false"/>
+      <column name="mapped_name" primaryKey="false" required="false" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="event_alias">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="local_part" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="namespace" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="prefix" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+    </table>
+    <table name="event_definition">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="local_part" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="namespace" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="prefix" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="value_type" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+    </table>
+    <table name="filter_lifecycle">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="filter_mapping">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="filter_name" primaryKey="false" required="true" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="filtered_portlet">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="folder">
+      <column name="folder_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="parent_id" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="path" primaryKey="false" required="true" type="VARCHAR" size="240" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="title" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="short_title" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="is_hidden" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="skin" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="default_layout_decorator" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="default_portlet_decorator" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="default_page_name" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="subsite" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="user_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="role_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="group_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="mediatype" primaryKey="false" required="false" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="locale" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="ext_attr_name" primaryKey="false" required="false" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="ext_attr_value" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="owner_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <foreign-key foreignTable="folder" name="fk_folder_1">
+        <reference local="parent_id" foreign="folder_id"/>
+      </foreign-key>
+      <unique name="un_folder_1">
+        <unique-column name="path"/>
+      </unique>
+      <index name="ix_folder_1">
+        <index-column name="parent_id"/>
+      </index>
+    </table>
+    <table name="folder_constraint">
+      <column name="constraint_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="folder_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="apply_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="user_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="role_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="group_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="permissions_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <foreign-key foreignTable="folder" name="fk_folder_constraint_1">
+        <reference local="folder_id" foreign="folder_id"/>
+      </foreign-key>
+      <index name="ix_folder_constraint_1">
+        <index-column name="folder_id"/>
+      </index>
+    </table>
+    <table name="folder_constraints_ref">
+      <column name="constraints_ref_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="folder_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="apply_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+      <foreign-key foreignTable="folder" name="fk_folder_constraints_ref_1">
+        <reference local="folder_id" foreign="folder_id"/>
+      </foreign-key>
+      <unique name="un_folder_constraints_ref_1">
+        <unique-column name="folder_id"/>
+        <unique-column name="name"/>
+      </unique>
+      <index name="ix_folder_constraints_ref_1">
+        <index-column name="folder_id"/>
+      </index>
+    </table>
+    <table name="folder_menu">
+      <column name="menu_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="class_name" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="parent_id" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="folder_id" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="element_order" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="title" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="short_title" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="text" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="options" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="depth" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="is_paths" primaryKey="false" required="false" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="is_regexp" primaryKey="false" required="false" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="profile" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="options_order" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="skin" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="is_nest" primaryKey="false" required="false" type="SMALLINT" size="5" autoIncrement="false"/>
+      <foreign-key foreignTable="folder" name="fk_folder_menu_2">
+        <reference local="folder_id" foreign="folder_id"/>
+      </foreign-key>
+      <foreign-key foreignTable="folder_menu" name="fk_folder_menu_1">
+        <reference local="parent_id" foreign="menu_id"/>
+      </foreign-key>
+      <index name="ix_folder_menu_1">
+        <index-column name="parent_id"/>
+      </index>
+      <index name="ix_folder_menu_2">
+        <index-column name="folder_id"/>
+      </index>
+      <index name="un_folder_menu_1">
+        <index-column name="folder_id"/>
+        <index-column name="name"/>
+      </index>
+    </table>
+    <table name="folder_menu_metadata">
+      <column name="metadata_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="menu_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="locale" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="value" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <foreign-key foreignTable="folder_menu" name="fk_folder_menu_metadata_1">
+        <reference local="menu_id" foreign="menu_id"/>
+      </foreign-key>
+      <unique name="un_folder_menu_metadata_1">
+        <unique-column name="menu_id"/>
+        <unique-column name="name"/>
+        <unique-column name="locale"/>
+        <unique-column name="value"/>
+      </unique>
+      <index name="ix_folder_menu_metadata_1">
+        <index-column name="menu_id"/>
+      </index>
+    </table>
+    <table name="folder_metadata">
+      <column name="metadata_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="folder_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="locale" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="value" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <foreign-key foreignTable="folder" name="fk_folder_metadata_1">
+        <reference local="folder_id" foreign="folder_id"/>
+      </foreign-key>
+      <unique name="un_folder_metadata_1">
+        <unique-column name="folder_id"/>
+        <unique-column name="name"/>
+        <unique-column name="locale"/>
+        <unique-column name="value"/>
+      </unique>
+      <index name="ix_folder_metadata_1">
+        <index-column name="folder_id"/>
+      </index>
+    </table>
+    <table name="folder_order">
+      <column name="order_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="folder_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="sort_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <foreign-key foreignTable="folder" name="fk_folder_order_1">
+        <reference local="folder_id" foreign="folder_id"/>
+      </foreign-key>
+      <unique name="un_folder_order_1">
+        <unique-column name="folder_id"/>
+        <unique-column name="name"/>
+      </unique>
+      <index name="ix_folder_order_1">
+        <index-column name="folder_id"/>
+      </index>
+    </table>
+    <table name="fragment">
+      <column name="fragment_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="class_name" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="parent_id" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="page_id" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="fragment_string_id" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="fragment_string_refid" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="title" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="short_title" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="type" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="skin" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="decorator" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="state" primaryKey="false" required="false" type="VARCHAR" size="10" autoIncrement="false"/>
+      <column name="pmode" primaryKey="false" required="false" type="VARCHAR" size="10" autoIncrement="false"/>
+      <column name="layout_row" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="layout_column" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="layout_sizes" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="layout_x" primaryKey="false" required="false" type="REAL" size="8,8" autoIncrement="false"/>
+      <column name="layout_y" primaryKey="false" required="false" type="REAL" size="8,8" autoIncrement="false"/>
+      <column name="layout_z" primaryKey="false" required="false" type="REAL" size="8,8" autoIncrement="false"/>
+      <column name="layout_width" primaryKey="false" required="false" type="REAL" size="8,8" autoIncrement="false"/>
+      <column name="layout_height" primaryKey="false" required="false" type="REAL" size="8,8" autoIncrement="false"/>
+      <column name="owner_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <foreign-key foreignTable="fragment" name="fk_fragment_1">
+        <reference local="parent_id" foreign="fragment_id"/>
+      </foreign-key>
+      <foreign-key foreignTable="page" name="fk_fragment_2">
+        <reference local="page_id" foreign="page_id"/>
+      </foreign-key>
+      <index name="ix_fragment_1">
+        <index-column name="parent_id"/>
+      </index>
+      <index name="ix_fragment_2">
+        <index-column name="fragment_string_refid"/>
+      </index>
+      <index name="ix_fragment_3">
+        <index-column name="fragment_string_id"/>
+      </index>
+      <index name="un_fragment_1">
+        <index-column name="page_id"/>
+      </index>
+    </table>
+    <table name="fragment_constraint">
+      <column name="constraint_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="fragment_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="apply_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="user_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="role_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="group_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="permissions_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <foreign-key foreignTable="fragment" name="fk_fragment_constraint_1">
+        <reference local="fragment_id" foreign="fragment_id"/>
+      </foreign-key>
+      <index name="ix_fragment_constraint_1">
+        <index-column name="fragment_id"/>
+      </index>
+    </table>
+    <table name="fragment_constraints_ref">
+      <column name="constraints_ref_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="fragment_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="apply_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+      <foreign-key foreignTable="fragment" name="fk_fragment_constraints_ref_1">
+        <reference local="fragment_id" foreign="fragment_id"/>
+      </foreign-key>
+      <unique name="un_fragment_constraints_ref_1">
+        <unique-column name="fragment_id"/>
+        <unique-column name="name"/>
+      </unique>
+      <index name="ix_fragment_constraints_ref_1">
+        <index-column name="fragment_id"/>
+      </index>
+    </table>
+    <table name="fragment_pref">
+      <column name="pref_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="fragment_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="is_read_only" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <foreign-key foreignTable="fragment" name="fk_fragment_pref_1">
+        <reference local="fragment_id" foreign="fragment_id"/>
+      </foreign-key>
+      <unique name="un_fragment_pref_1">
+        <unique-column name="fragment_id"/>
+        <unique-column name="name"/>
+      </unique>
+      <index name="ix_fragment_pref_1">
+        <index-column name="fragment_id"/>
+      </index>
+    </table>
+    <table name="fragment_pref_value">
+      <column name="pref_value_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="pref_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="value_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="value" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <foreign-key foreignTable="fragment_pref" name="fk_fragment_pref_value_1">
+        <reference local="pref_id" foreign="pref_id"/>
+      </foreign-key>
+      <index name="ix_fragment_pref_value_1">
+        <index-column name="pref_id"/>
+      </index>
+    </table>
+    <table name="fragment_prop">
+      <column name="prop_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="fragment_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="scope" primaryKey="false" required="false" type="VARCHAR" size="10" autoIncrement="false"/>
+      <column name="scope_value" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="value" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <foreign-key foreignTable="fragment" name="fk_fragment_prop_1">
+        <reference local="fragment_id" foreign="fragment_id"/>
+      </foreign-key>
+      <unique name="un_fragment_prop_1">
+        <unique-column name="fragment_id"/>
+        <unique-column name="name"/>
+        <unique-column name="scope"/>
+        <unique-column name="scope_value"/>
+      </unique>
+      <index name="ix_fragment_prop_1">
+        <index-column name="fragment_id"/>
+      </index>
+    </table>
+    <table name="jetspeed_service">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="false" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="language">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="portlet_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="locale_string" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false"/>
+      <column name="supported_locale" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="title" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="short_title" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="keywords" primaryKey="false" required="false" type="LONGVARCHAR" autoIncrement="false"/>
+    </table>
+    <table name="link">
+      <column name="link_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="parent_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="path" primaryKey="false" required="true" type="VARCHAR" size="240" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="version" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="title" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="short_title" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="is_hidden" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="skin" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="target" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="url" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="subsite" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="user_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="role_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="group_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="mediatype" primaryKey="false" required="false" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="locale" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="ext_attr_name" primaryKey="false" required="false" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="ext_attr_value" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="owner_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <foreign-key foreignTable="folder" name="fk_link_1">
+        <reference local="parent_id" foreign="folder_id"/>
+      </foreign-key>
+      <unique name="un_link_1">
+        <unique-column name="path"/>
+      </unique>
+      <index name="ix_link_1">
+        <index-column name="parent_id"/>
+      </index>
+    </table>
+    <table name="link_constraint">
+      <column name="constraint_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="link_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="apply_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="user_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="role_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="group_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="permissions_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <foreign-key foreignTable="link" name="fk_link_constraint_1">
+        <reference local="link_id" foreign="link_id"/>
+      </foreign-key>
+      <index name="ix_link_constraint_1">
+        <index-column name="link_id"/>
+      </index>
+    </table>
+    <table name="link_constraints_ref">
+      <column name="constraints_ref_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="link_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="apply_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+      <foreign-key foreignTable="link" name="fk_link_constraints_ref_1">
+        <reference local="link_id" foreign="link_id"/>
+      </foreign-key>
+      <unique name="un_link_constraints_ref_1">
+        <unique-column name="link_id"/>
+        <unique-column name="name"/>
+      </unique>
+      <index name="ix_link_constraints_ref_1">
+        <index-column name="link_id"/>
+      </index>
+    </table>
+    <table name="link_metadata">
+      <column name="metadata_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="link_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="locale" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="value" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <foreign-key foreignTable="link" name="fk_link_metadata_1">
+        <reference local="link_id" foreign="link_id"/>
+      </foreign-key>
+      <unique name="un_link_metadata_1">
+        <unique-column name="link_id"/>
+        <unique-column name="name"/>
+        <unique-column name="locale"/>
+        <unique-column name="value"/>
+      </unique>
+      <index name="ix_link_metadata_1">
+        <index-column name="link_id"/>
+      </index>
+    </table>
+    <table name="locale_encoding_mapping">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="locale_string" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false"/>
+      <column name="encoding" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false"/>
+    </table>
+    <table name="localized_description">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_class_name" primaryKey="false" required="true" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="description" primaryKey="false" required="true" type="LONGVARCHAR" autoIncrement="false"/>
+      <column name="locale_string" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false"/>
+    </table>
+    <table name="localized_display_name">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_class_name" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="display_name" primaryKey="false" required="true" type="LONGVARCHAR" autoIncrement="false"/>
+      <column name="locale_string" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false"/>
+    </table>
+    <table name="media_type">
+      <column name="mediatype_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="character_set" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="title" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="description" primaryKey="false" required="false" type="LONGVARCHAR" autoIncrement="false"/>
+    </table>
+    <table name="mediatype_to_capability">
+      <column name="mediatype_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="capability_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+    </table>
+    <table name="mediatype_to_mimetype">
+      <column name="mediatype_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="mimetype_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+    </table>
+    <table name="mimetype">
+      <column name="mimetype_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+    </table>
+    <table name="named_parameter">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="ojb_dlist">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="size_" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+    </table>
+    <table name="ojb_dlist_entries">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="dlist_id" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="position_" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="oid_" primaryKey="false" required="false" type="LONGVARBINARY" autoIncrement="false"/>
+    </table>
+    <table name="ojb_dmap">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="size_" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+    </table>
+    <table name="ojb_dset">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="size_" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+    </table>
+    <table name="ojb_dset_entries">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="dlist_id" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="position_" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="oid_" primaryKey="false" required="false" type="LONGVARBINARY" autoIncrement="false"/>
+    </table>
+    <table name="ojb_hl_seq">
+      <column name="tablename" primaryKey="true" required="true" type="VARCHAR" size="175" autoIncrement="false"/>
+      <column name="fieldname" primaryKey="true" required="true" type="VARCHAR" size="70" autoIncrement="false"/>
+      <column name="max_key" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="grab_size" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="version" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+    </table>
+    <table name="ojb_lockentry">
+      <column name="oid_" primaryKey="true" required="true" type="VARCHAR" size="250" autoIncrement="false"/>
+      <column name="tx_id" primaryKey="true" required="true" type="VARCHAR" size="50" autoIncrement="false"/>
+      <column name="timestamp_" primaryKey="false" required="false" type="TIMESTAMP" size="29,6" autoIncrement="false"/>
+      <column name="isolationlevel" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="locktype" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+    </table>
+    <table name="ojb_nrm">
+      <column name="name" primaryKey="true" required="true" type="VARCHAR" size="250" autoIncrement="false"/>
+      <column name="oid_" primaryKey="false" required="false" type="LONGVARBINARY" autoIncrement="false"/>
+    </table>
+    <table name="pa_metadata_fields">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="object_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="column_value" primaryKey="false" required="true" type="LONGVARCHAR" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="locale_string" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false"/>
+    </table>
+    <table name="pa_security_constraint">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="transport" primaryKey="false" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+    </table>
+    <table name="page">
+      <column name="page_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="class_name" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="parent_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="path" primaryKey="false" required="true" type="VARCHAR" size="240" autoIncrement="false"/>
+      <column name="content_type" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="is_inheritable" primaryKey="false" required="false" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="version" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="title" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="short_title" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="is_hidden" primaryKey="false" required="false" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="skin" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="default_layout_decorator" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="default_portlet_decorator" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="subsite" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="user_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="role_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="group_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="mediatype" primaryKey="false" required="false" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="locale" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="ext_attr_name" primaryKey="false" required="false" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="ext_attr_value" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="owner_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <foreign-key foreignTable="folder" name="fk_page_1">
+        <reference local="parent_id" foreign="folder_id"/>
+      </foreign-key>
+      <unique name="un_page_1">
+        <unique-column name="path"/>
+      </unique>
+      <index name="ix_page_1">
+        <index-column name="parent_id"/>
+      </index>
+    </table>
+    <table name="page_constraint">
+      <column name="constraint_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="page_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="apply_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="user_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="role_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="group_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="permissions_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <foreign-key foreignTable="page" name="fk_page_constraint_1">
+        <reference local="page_id" foreign="page_id"/>
+      </foreign-key>
+      <index name="ix_page_constraint_1">
+        <index-column name="page_id"/>
+      </index>
+    </table>
+    <table name="page_constraints_ref">
+      <column name="constraints_ref_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="page_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="apply_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+      <foreign-key foreignTable="page" name="fk_page_constraints_ref_1">
+        <reference local="page_id" foreign="page_id"/>
+      </foreign-key>
+      <unique name="un_page_constraints_ref_1">
+        <unique-column name="page_id"/>
+        <unique-column name="name"/>
+      </unique>
+      <index name="ix_page_constraints_ref_1">
+        <index-column name="page_id"/>
+      </index>
+    </table>
+    <table name="page_menu">
+      <column name="menu_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="class_name" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="parent_id" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="page_id" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="element_order" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="title" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="short_title" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="text" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="options" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="depth" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="is_paths" primaryKey="false" required="false" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="is_regexp" primaryKey="false" required="false" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="profile" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="options_order" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="skin" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="is_nest" primaryKey="false" required="false" type="SMALLINT" size="5" autoIncrement="false"/>
+      <foreign-key foreignTable="page" name="fk_page_menu_2">
+        <reference local="page_id" foreign="page_id"/>
+      </foreign-key>
+      <foreign-key foreignTable="page_menu" name="fk_page_menu_1">
+        <reference local="parent_id" foreign="menu_id"/>
+      </foreign-key>
+      <index name="ix_page_menu_1">
+        <index-column name="parent_id"/>
+      </index>
+      <index name="ix_page_menu_2">
+        <index-column name="page_id"/>
+      </index>
+      <index name="un_page_menu_1">
+        <index-column name="page_id"/>
+        <index-column name="name"/>
+      </index>
+    </table>
+    <table name="page_menu_metadata">
+      <column name="metadata_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="menu_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="locale" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="value" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <foreign-key foreignTable="page_menu" name="fk_page_menu_metadata_1">
+        <reference local="menu_id" foreign="menu_id"/>
+      </foreign-key>
+      <unique name="un_page_menu_metadata_1">
+        <unique-column name="menu_id"/>
+        <unique-column name="name"/>
+        <unique-column name="locale"/>
+        <unique-column name="value"/>
+      </unique>
+      <index name="ix_page_menu_metadata_1">
+        <index-column name="menu_id"/>
+      </index>
+    </table>
+    <table name="page_metadata">
+      <column name="metadata_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="page_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="locale" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="value" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <foreign-key foreignTable="page" name="fk_page_metadata_1">
+        <reference local="page_id" foreign="page_id"/>
+      </foreign-key>
+      <unique name="un_page_metadata_1">
+        <unique-column name="page_id"/>
+        <unique-column name="name"/>
+        <unique-column name="locale"/>
+        <unique-column name="value"/>
+      </unique>
+      <index name="ix_page_metadata_1">
+        <index-column name="page_id"/>
+      </index>
+    </table>
+    <table name="page_sec_constraint_def">
+      <column name="constraint_def_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="constraints_def_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="apply_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="user_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="role_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="group_principals_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="permissions_acl" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <foreign-key foreignTable="page_sec_constraints_def" name="fk_page_sec_constraint_def_1">
+        <reference local="constraints_def_id" foreign="constraints_def_id"/>
+      </foreign-key>
+      <index name="ix_page_sec_constraint_def_1">
+        <index-column name="constraints_def_id"/>
+      </index>
+    </table>
+    <table name="page_sec_constraints_def">
+      <column name="constraints_def_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="page_security_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+      <foreign-key foreignTable="page_security" name="fk_page_sec_constraints_def_1">
+        <reference local="page_security_id" foreign="page_security_id"/>
+      </foreign-key>
+      <unique name="un_page_sec_constraints_def_1">
+        <unique-column name="page_security_id"/>
+        <unique-column name="name"/>
+      </unique>
+      <index name="ix_page_sec_constraints_def_1">
+        <index-column name="page_security_id"/>
+      </index>
+    </table>
+    <table name="page_sec_constraints_ref">
+      <column name="constraints_ref_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="page_security_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="apply_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+      <foreign-key foreignTable="page_security" name="fk_page_sec_constraints_ref_1">
+        <reference local="page_security_id" foreign="page_security_id"/>
+      </foreign-key>
+      <unique name="un_page_sec_constraints_ref_1">
+        <unique-column name="page_security_id"/>
+        <unique-column name="name"/>
+      </unique>
+      <index name="ix_page_sec_constraints_ref_1">
+        <index-column name="page_security_id"/>
+      </index>
+    </table>
+    <table name="page_security">
+      <column name="page_security_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="parent_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="path" primaryKey="false" required="true" type="VARCHAR" size="240" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="version" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="subsite" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="user_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="role_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="group_principal" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="mediatype" primaryKey="false" required="false" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="locale" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="ext_attr_name" primaryKey="false" required="false" type="VARCHAR" size="15" autoIncrement="false"/>
+      <column name="ext_attr_value" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <foreign-key foreignTable="folder" name="fk_page_security_1">
+        <reference local="parent_id" foreign="folder_id"/>
+      </foreign-key>
+      <unique name="un_page_security_1">
+        <unique-column name="parent_id"/>
+      </unique>
+      <unique name="un_page_security_2">
+        <unique-column name="path"/>
+      </unique>
+    </table>
+    <table name="page_statistics">
+      <column name="ipaddress" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="user_name" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="time_stamp" primaryKey="false" required="false" type="TIMESTAMP" size="29,6" autoIncrement="false"/>
+      <column name="page" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="status" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="elapsed_time" primaryKey="false" required="false" type="BIGINT" size="19" autoIncrement="false"/>
+    </table>
+    <table name="parameter">
+      <column name="parameter_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_class_name" primaryKey="false" required="true" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="parameter_value" primaryKey="false" required="false" type="LONGVARCHAR" autoIncrement="false"/>
+    </table>
+    <table name="parameter_alias">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="local_part" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="namespace" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="prefix" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+    </table>
+    <table name="pd_metadata_fields">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="object_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="column_value" primaryKey="false" required="true" type="LONGVARCHAR" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="locale_string" primaryKey="false" required="true" type="VARCHAR" size="50" autoIncrement="false"/>
+    </table>
+    <table name="portlet_application">
+      <column name="application_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="app_name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="context_path" primaryKey="false" required="true" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="revision" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="version" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="app_type" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="checksum" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="security_ref" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="default_namespace" primaryKey="false" required="false" type="VARCHAR" size="120" autoIncrement="false"/>
+      <column name="resource_bundle" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <unique name="uk_application">
+        <unique-column name="app_name"/>
+      </unique>
+    </table>
+    <table name="portlet_definition">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="class_name" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="expiration_cache" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="resource_bundle" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="preference_validator" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="security_ref" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="cache_scope" primaryKey="false" required="false" type="VARCHAR" size="30" autoIncrement="false"/>
+      <column name="clone_parent" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+    </table>
+    <table name="portlet_filter">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="filter_name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="filter_class" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+    </table>
+    <table name="portlet_listener">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="listener_class" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+    </table>
+    <table name="portlet_preference">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="dtype" primaryKey="false" required="true" type="VARCHAR" size="10" autoIncrement="false"/>
+      <column name="application_name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="portlet_name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="entity_id" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="user_name" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="254" autoIncrement="false"/>
+      <column name="readonly" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <unique name="uix_portlet_preference">
+        <unique-column name="dtype"/>
+        <unique-column name="application_name"/>
+        <unique-column name="portlet_name"/>
+        <unique-column name="entity_id"/>
+        <unique-column name="user_name"/>
+        <unique-column name="name"/>
+      </unique>
+    </table>
+    <table name="portlet_preference_value">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="pref_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="idx" primaryKey="true" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="pref_value" primaryKey="false" required="false" type="VARCHAR" size="4000" autoIncrement="false"/>
+      <foreign-key foreignTable="portlet_preference" name="fk_portlet_preference">
+        <reference local="pref_id" foreign="id"/>
+      </foreign-key>
+      <index name="ix_portlet_preference">
+        <index-column name="pref_id"/>
+      </index>
+    </table>
+    <table name="portlet_statistics">
+      <column name="ipaddress" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="user_name" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="time_stamp" primaryKey="false" required="false" type="TIMESTAMP" size="29,6" autoIncrement="false"/>
+      <column name="page" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="portlet" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="status" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="elapsed_time" primaryKey="false" required="false" type="BIGINT" size="19" autoIncrement="false"/>
+    </table>
+    <table name="portlet_supports">
+      <column name="supports_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="portlet_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="mime_type" primaryKey="false" required="true" type="VARCHAR" size="30" autoIncrement="false"/>
+      <column name="modes" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="states" primaryKey="false" required="false" type="VARCHAR" size="255" autoIncrement="false"/>
+      <unique name="uk_supports">
+        <unique-column name="portlet_id"/>
+        <unique-column name="mime_type"/>
+      </unique>
+    </table>
+    <table name="principal_permission">
+      <column name="principal_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="permission_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <foreign-key foreignTable="security_permission" name="fk_principal_permission_1">
+        <reference local="permission_id" foreign="permission_id"/>
+      </foreign-key>
+      <foreign-key foreignTable="security_principal" name="fk_principal_permission_2">
+        <reference local="principal_id" foreign="principal_id"/>
+      </foreign-key>
+      <index name="ix_principal_permission_1">
+        <index-column name="permission_id"/>
+      </index>
+      <index name="ix_principal_permission_2">
+        <index-column name="principal_id"/>
+      </index>
+    </table>
+    <table name="principal_rule_assoc">
+      <column name="principal_name" primaryKey="true" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="locator_name" primaryKey="true" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="rule_id" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+    </table>
+    <table name="processing_event">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="local_part" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="namespace" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="prefix" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+    </table>
+    <table name="profile_page_assoc">
+      <column name="locator_hash" primaryKey="true" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="page_id" primaryKey="true" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+    </table>
+    <table name="profiling_rule">
+      <column name="rule_id" primaryKey="true" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="class_name" primaryKey="false" required="true" type="VARCHAR" size="100" autoIncrement="false"/>
+      <column name="title" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false"/>
+    </table>
+    <table name="public_parameter">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="local_part" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="namespace" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="prefix" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="identifier" primaryKey="false" required="true" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="publishing_event">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="local_part" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="namespace" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="prefix" primaryKey="false" required="false" type="VARCHAR" size="20" autoIncrement="false"/>
+    </table>
+    <table name="rule_criterion">
+      <column name="criterion_id" primaryKey="true" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="rule_id" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="fallback_order" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="request_type" primaryKey="false" required="true" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="column_value" primaryKey="false" required="false" type="VARCHAR" size="128" autoIncrement="false"/>
+      <column name="fallback_type" primaryKey="false" required="false" type="INTEGER" size="10" default="1" autoIncrement="false"/>
+      <foreign-key foreignTable="profiling_rule" name="fk_rule_criterion_1">
+        <reference local="rule_id" foreign="rule_id"/>
+      </foreign-key>
+      <index name="ix_rule_criterion_1">
+        <index-column name="rule_id"/>
+      </index>
+      <index name="ix_rule_criterion_2">
+        <index-column name="rule_id"/>
+        <index-column name="fallback_order"/>
+      </index>
+    </table>
+    <table name="runtime_option">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_class_name" primaryKey="false" required="true" type="VARCHAR" size="255" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="runtime_value">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="rvalue" primaryKey="false" required="true" type="VARCHAR" size="200" autoIncrement="false"/>
+    </table>
+    <table name="secured_portlet">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="owner_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="security_attribute">
+      <column name="attr_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="principal_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="attr_name" primaryKey="true" required="true" type="VARCHAR" size="200" autoIncrement="false"/>
+      <column name="attr_value" primaryKey="false" required="false" type="VARCHAR" size="1000" autoIncrement="false"/>
+      <foreign-key foreignTable="security_principal" name="fk_principal_attr">
+        <reference local="principal_id" foreign="principal_id"/>
+      </foreign-key>
+      <index name="ix_name_lookup">
+        <index-column name="attr_name"/>
+      </index>
+      <index name="ix_principal_attr">
+        <index-column name="principal_id"/>
+      </index>
+    </table>
+    <table name="security_credential">
+      <column name="credential_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="principal_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="credential_value" primaryKey="false" required="false" type="VARCHAR" size="254" autoIncrement="false"/>
+      <column name="type" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="update_allowed" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="is_state_readonly" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="update_required" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="is_encoded" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="is_enabled" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="auth_failures" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="is_expired" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="creation_date" primaryKey="false" required="true" type="TIMESTAMP" size="29,6" autoIncrement="false"/>
+      <column name="modified_date" primaryKey="false" required="true" type="TIMESTAMP" size="29,6" autoIncrement="false"/>
+      <column name="prev_auth_date" primaryKey="false" required="false" type="TIMESTAMP" size="29,6" autoIncrement="false"/>
+      <column name="last_auth_date" primaryKey="false" required="false" type="TIMESTAMP" size="29,6" autoIncrement="false"/>
+      <column name="expiration_date" primaryKey="false" required="false" type="DATE" size="13" autoIncrement="false"/>
+      <foreign-key foreignTable="security_principal" name="fk_security_credential_1">
+        <reference local="principal_id" foreign="principal_id"/>
+      </foreign-key>
+      <index name="ix_security_credential_1">
+        <index-column name="principal_id"/>
+      </index>
+    </table>
+    <table name="security_domain">
+      <column name="domain_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="domain_name" primaryKey="false" required="false" type="VARCHAR" size="254" autoIncrement="false"/>
+      <column name="remote" primaryKey="false" required="false" type="SMALLINT" size="5" default="0" autoIncrement="false"/>
+      <column name="enabled" primaryKey="false" required="false" type="SMALLINT" size="5" default="1" autoIncrement="false"/>
+      <column name="owner_domain_id" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <unique name="uix_domain_name">
+        <unique-column name="domain_name"/>
+      </unique>
+    </table>
+    <table name="security_permission">
+      <column name="permission_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="permission_type" primaryKey="false" required="true" type="VARCHAR" size="30" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="254" autoIncrement="false"/>
+      <column name="actions" primaryKey="false" required="true" type="VARCHAR" size="254" autoIncrement="false"/>
+      <unique name="uix_security_permission">
+        <unique-column name="permission_type"/>
+        <unique-column name="name"/>
+        <unique-column name="actions"/>
+      </unique>
+    </table>
+    <table name="security_principal">
+      <column name="principal_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="principal_type" primaryKey="false" required="true" type="VARCHAR" size="20" autoIncrement="false"/>
+      <column name="principal_name" primaryKey="false" required="true" type="VARCHAR" size="200" autoIncrement="false"/>
+      <column name="is_mapped" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="is_enabled" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="is_readonly" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="is_removable" primaryKey="false" required="true" type="SMALLINT" size="5" autoIncrement="false"/>
+      <column name="creation_date" primaryKey="false" required="true" type="TIMESTAMP" size="29,6" autoIncrement="false"/>
+      <column name="modified_date" primaryKey="false" required="true" type="TIMESTAMP" size="29,6" autoIncrement="false"/>
+      <column name="domain_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <foreign-key foreignTable="security_domain" name="fk_security_domain_1">
+        <reference local="domain_id" foreign="domain_id"/>
+      </foreign-key>
+      <unique name="uix_security_principal">
+        <unique-column name="principal_type"/>
+        <unique-column name="principal_name"/>
+        <unique-column name="domain_id"/>
+      </unique>
+      <index name="ix_security_domain_1">
+        <index-column name="domain_id"/>
+      </index>
+    </table>
+    <table name="security_principal_assoc">
+      <column name="assoc_name" primaryKey="true" required="true" type="VARCHAR" size="30" autoIncrement="false"/>
+      <column name="from_principal_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="to_principal_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <foreign-key foreignTable="security_principal" name="fk_from_principal_assoc">
+        <reference local="from_principal_id" foreign="principal_id"/>
+      </foreign-key>
+      <foreign-key foreignTable="security_principal" name="fk_to_principal_assoc">
+        <reference local="to_principal_id" foreign="principal_id"/>
+      </foreign-key>
+      <index name="ix_from_principal_assoc">
+        <index-column name="from_principal_id"/>
+      </index>
+      <index name="ix_to_principal_assoc">
+        <index-column name="to_principal_id"/>
+      </index>
+      <index name="ix_to_principal_assoc_lookup">
+        <index-column name="assoc_name"/>
+        <index-column name="to_principal_id"/>
+      </index>
+    </table>
+    <table name="security_role">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="security_role_reference">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="portlet_definition_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="role_name" primaryKey="false" required="true" type="VARCHAR" size="150" autoIncrement="false"/>
+      <column name="role_link" primaryKey="false" required="false" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="sso_site">
+      <column name="site_id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="true" type="VARCHAR" size="254" autoIncrement="false"/>
+      <column name="url" primaryKey="false" required="true" type="VARCHAR" size="254" autoIncrement="false"/>
+      <column name="allow_user_set" primaryKey="false" required="false" type="SMALLINT" size="5" default="0" autoIncrement="false"/>
+      <column name="requires_certificate" primaryKey="false" required="false" type="SMALLINT" size="5" default="0" autoIncrement="false"/>
+      <column name="challenge_response_auth" primaryKey="false" required="false" type="SMALLINT" size="5" default="0" autoIncrement="false"/>
+      <column name="form_auth" primaryKey="false" required="false" type="SMALLINT" size="5" default="0" autoIncrement="false"/>
+      <column name="form_user_field" primaryKey="false" required="false" type="VARCHAR" size="128" autoIncrement="false"/>
+      <column name="form_pwd_field" primaryKey="false" required="false" type="VARCHAR" size="128" autoIncrement="false"/>
+      <column name="realm" primaryKey="false" required="false" type="VARCHAR" size="128" autoIncrement="false"/>
+      <column name="domain_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <foreign-key foreignTable="security_domain" name="fk_security_domain_2">
+        <reference local="domain_id" foreign="domain_id"/>
+      </foreign-key>
+      <unique name="uix_site_name">
+        <unique-column name="name"/>
+      </unique>
+      <unique name="uix_site_url">
+        <unique-column name="url"/>
+      </unique>
+      <index name="ix_security_domain_2">
+        <index-column name="domain_id"/>
+      </index>
+    </table>
+    <table name="user_activity">
+      <column name="activity" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="category" primaryKey="false" required="false" type="VARCHAR" size="40" autoIncrement="false"/>
+      <column name="user_name" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="time_stamp" primaryKey="false" required="false" type="TIMESTAMP" size="29,6" autoIncrement="false"/>
+      <column name="ipaddress" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="attr_name" primaryKey="false" required="false" type="VARCHAR" size="200" autoIncrement="false"/>
+      <column name="attr_value_before" primaryKey="false" required="false" type="VARCHAR" size="1000" autoIncrement="false"/>
+      <column name="attr_value_after" primaryKey="false" required="false" type="VARCHAR" size="1000" autoIncrement="false"/>
+      <column name="description" primaryKey="false" required="false" type="VARCHAR" size="128" autoIncrement="false"/>
+    </table>
+    <table name="user_attribute">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="false" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="user_attribute_ref">
+      <column name="id" primaryKey="true" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="application_id" primaryKey="false" required="true" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="name" primaryKey="false" required="false" type="VARCHAR" size="150" autoIncrement="false"/>
+      <column name="name_link" primaryKey="false" required="false" type="VARCHAR" size="150" autoIncrement="false"/>
+    </table>
+    <table name="user_statistics">
+      <column name="ipaddress" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="user_name" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false"/>
+      <column name="time_stamp" primaryKey="false" required="false" type="TIMESTAMP" size="29,6" autoIncrement="false"/>
+      <column name="status" primaryKey="false" required="false" type="INTEGER" size="10" autoIncrement="false"/>
+      <column name="elapsed_time" primaryKey="false" required="false" type="BIGINT" size="19" autoIncrement="false"/>
+    </table>
+  </database>
