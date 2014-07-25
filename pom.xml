@@ -18,10 +18,15 @@
 		<portals.portlet2-api-spec.version>1.0</portals.portlet2-api-spec.version>
 		<portal.context.name>jetexpress2.3</portal.context.name>
 
-		<jetspeed.jdbc.driverClassName>org.postgresql.Driver</jetspeed.jdbc.driverClassName>
-		<jetspeed.jdbc.url>jdbc:postgresql://localhost/jetspeed2</jetspeed.jdbc.url>
-		<jetspeed.jdbc.username>postgres</jetspeed.jdbc.username>
-		<jetspeed.jdbc.password>postgres</jetspeed.jdbc.password>
+		<!-- <jetspeed.jdbc.driverClassName>org.postgresql.Driver</jetspeed.jdbc.driverClassName> -->
+		<!-- <jetspeed.jdbc.url>jdbc:postgresql://localhost/jetspeed2</jetspeed.jdbc.url> -->
+		<!-- <jetspeed.jdbc.username>postgres</jetspeed.jdbc.username> -->
+		<!-- <jetspeed.jdbc.password>postgres</jetspeed.jdbc.password> -->
+
+		<jetspeed.jdbc.driverClassName>org.apache.derby.jdbc.EmbeddedDriver</jetspeed.jdbc.driverClassName>
+		<jetspeed.jdbc.url>jdbc:derby:${java.io.tmpdir}/jetspeed-db-sample</jetspeed.jdbc.url>
+		<jetspeed.jdbc.username>sa</jetspeed.jdbc.username>
+		<jetspeed.jdbc.password></jetspeed.jdbc.password>
 
 		<jetspeed.exploded.war.directory>${project.build.directory}/${project.build.finalName}</jetspeed.exploded.war.directory>
 		<jetspeed.tomcat.shared.lib>tomcat-shared-lib</jetspeed.tomcat.shared.lib>
@@ -228,14 +233,14 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.6.6</version>
-			<!-- <scope>test</scope> -->
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>1.7.4</version>
-			<!-- <scope>test</scope> -->
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
@@ -337,19 +342,32 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- <dependency> -->
+		<!-- <groupId>org.postgresql</groupId> -->
+		<!-- <artifactId>postgresql</artifactId> -->
+		<!-- <version>9.3-1100-jdbc41</version> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
+
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.3-1100-jdbc41</version>
-			<scope>provided</scope>
+			<groupId>org.apache.derby</groupId>
+			<artifactId>derby</artifactId>
+			<version>10.10.2.0</version>
+			<scope>runtime</scope>
 		</dependency>
 
+		<!-- <dependency> -->
+		<!-- <groupId>hsqldb</groupId> -->
+		<!-- <artifactId>hsqldb</artifactId> -->
+		<!-- <version>1.8.0.7</version> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
 	</dependencies>
 
+
+
 	<build>
-		<!-- <outputDirectory>/opt/tomcat/webapps/jetspeed</outputDirectory> -->
 		<outputDirectory>${project.build.directory}/${project.build.finalName}</outputDirectory>
-		<!-- <outputDirectory>/home/mansour/workspace/apache-karaf-4.0.0-SNAPSHOT/deploy/${project.build.finalName}</outputDirectory> -->
 
 		<plugins>
 			<plugin>
@@ -400,8 +418,8 @@
 						</goals>
 						<configuration>
 							<tasks>
-								<property name="js2.resources.jar" value="${org.apache.portals.jetspeed-2:jetspeed-portal-resources:jar}" />
-								<unzip src="${js2.resources.jar}" dest="${project.build.outputDirectory}/WEB-INF/conf">
+								<property name="jetspeed.resources.jar" value="${org.apache.portals.jetspeed-2:jetspeed-portal-resources:jar}" />
+								<unzip src="${jetspeed.resources.jar}" dest="${project.build.outputDirectory}/WEB-INF/conf">
 									<patternset>
 										<include name="conf/jetspeed/jetspeed.properties" />
 									</patternset>
@@ -414,101 +432,103 @@
 			</plugin>
 
 
-
 			<plugin>
-
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<path>/jet</path>
+					<path>/</path>
 					<warSourceDirectory>${jetspeed.exploded.war.directory}</warSourceDirectory>
 					<systemProperties>
 						<org.apache.portals.logdir>${project.build.directory}/logs.dir</org.apache.portals.logdir>
 					</systemProperties>
-					
 				</configuration>
-
 				<dependencies>
-
 					<dependency>
 						<groupId>javax.servlet</groupId>
 						<artifactId>jstl</artifactId>
 						<version>1.1.2</version>
 					</dependency>
-
 					<dependency>
 						<groupId>taglibs</groupId>
 						<artifactId>standard</artifactId>
 						<version>1.1.2</version>
 					</dependency>
-
 					<dependency>
 						<groupId>taglibs</groupId>
 						<artifactId>request</artifactId>
 						<version>1.0.1</version>
 					</dependency>
-
 					<dependency>
 						<groupId>javax.portlet</groupId>
 						<artifactId>portlet-api</artifactId>
 						<version>2.0</version>
 					</dependency>
-
 					<dependency>
 						<groupId>javax.ccpp</groupId>
 						<artifactId>ccpp</artifactId>
 						<version>1.0</version>
 					</dependency>
-
 					<dependency>
 						<groupId>javax.websocket</groupId>
 						<artifactId>javax.websocket-api</artifactId>
 						<version>1.0</version>
 					</dependency>
-
 					<dependency>
 						<groupId>org.apache.portals.pluto</groupId>
 						<artifactId>pluto-container-api</artifactId>
 						<version>${org.apache.pluto.version}</version>
 					</dependency>
-
 					<dependency>
 						<groupId>org.apache.portals.pluto</groupId>
 						<artifactId>pluto-taglib</artifactId>
 						<version>${org.apache.pluto.version}</version>
 					</dependency>
-
 					<dependency>
 						<groupId>org.apache.portals.jetspeed-2</groupId>
 						<artifactId>jetspeed-api</artifactId>
 						<version>${jetspeed.version}</version>
 					</dependency>
-
 					<dependency>
 						<groupId>org.apache.portals.jetspeed-2</groupId>
 						<artifactId>jetspeed-commons</artifactId>
 						<version>${jetspeed.version}</version>
 					</dependency>
-
 					<dependency>
 						<groupId>org.apache.portals.bridges</groupId>
 						<artifactId>portals-bridges-common</artifactId>
 						<version>2.0</version>
 					</dependency>
-
 					<dependency>
 						<groupId>org.apache.portals.applications</groupId>
 						<artifactId>apa-logging</artifactId>
 						<version>1.0</version>
 					</dependency>
-
+					<dependency>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-log4j12</artifactId>
+						<version>1.6.6</version>
+					</dependency>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.31</version>
+					</dependency>
 					<dependency>
 						<groupId>org.postgresql</groupId>
 						<artifactId>postgresql</artifactId>
 						<version>9.3-1100-jdbc41</version>
 					</dependency>
-
+					<dependency>
+						<groupId>org.apache.derby</groupId>
+						<artifactId>derby</artifactId>
+						<version>10.10.2.0</version>
+					</dependency>
+					<dependency>
+						<groupId>hsqldb</groupId>
+						<artifactId>hsqldb</artifactId>
+						<version>1.8.0.7</version>
+					</dependency>
 				</dependencies>
 			</plugin>
 
@@ -557,177 +577,7 @@
 		</plugins>
 	</build>
 
-
 	<profiles>
-		<profile>
-			<id>osgi</id>
-
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.felix</groupId>
-						<artifactId>maven-bundle-plugin</artifactId>
-						<version>2.3.7</version>
-						<extensions>true</extensions>
-						<executions>
-							<execution>
-								<id>bundle-manifest</id>
-								<phase>process-classes</phase>
-								<goals>
-									<goal>manifest</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<unpackBundle>false</unpackBundle>
-							<excludeDependencies>
-								*;type=!jar;scope=!runtime
-							</excludeDependencies>
-							<instructions>
-								<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-								<Bundle-Version>${project.version}</Bundle-Version>
-								<Embed-Transitive>true</Embed-Transitive>
-								<Embed-Directory>WEB-INF/lib</Embed-Directory>
-								<Web-ContextPath>jetspeed</Web-ContextPath>
-								<Embed-Dependency>
-									*;scope=compile,
-									!slf4j-ext,
-								</Embed-Dependency>
-								<Import-Package>
-									org.slf4j,
-									!antlr*,
-									!bsh,
-									!com.caucho.*,
-									!com.ibatis.*,
-									!com.ibm.wsspi*,
-									!com.jamonapi*,
-									!com.mchange.v2.*,
-									!com.mockrunner*,
-									!com.sun.jdmk.* ,
-									!com.sun.jdori* ,
-									!com.sun.jndi.ldap*,
-									!com.sun.msv.* ,
-									!com.sun.net.httpserver,
-									!com.sun.org.apache.xml.internal.serialize,
-									!com.sun.rowset,
-									!com.sun.xml.fastinfoset*,
-									!com.sun.javadoc* ,
-									!com.sun.tools* ,
-									!com.werken.xpath,
-									!com.xerox.amazonws.ec2,
-									!commonj.*,
-									!edu.emory.mathcs.backport.java.util.concurrent,
-									!electric.xml,
-									!freemarker.*,
-									!groovy.lang,
-									!javax.cache*,
-									!javax.crypto*,
-									!javax.ejb,
-									!javax.el,
-									!javax.inject,
-									!javax.faces.*,
-									!javax.jmdns*,
-									!javax.imageio*,
-									!javax.interceptor,
-									!javax.jdo*,
-									!javax.jms,
-									!javax.management*,
-									!javax.naming*,
-									!javax.net*,
-									!javax.persistence*,
-									!javax.resource.*,
-									!javax.validation*,
-									!org.apache.abdera*,
-									!org.apache.axiom*,
-									!org.apache.crimson*,
-									!org.apache.xml.*,
-									!javax.rmi,
-									!javax.swing*,
-									!joptsimple,
-									!net.sf.jasperreports.engine*,
-									!netscape.ldap,
-									!oracle.toplink.*,
-									!oracle.xml.parser*,
-									!org.apache.avalon.framework.logger,
-									!org.apache.bcel.classfile,
-									!org.apache.bcel.generic,
-									!org.apache.bcel.util,
-									!org.apache.commons.jexl2*,
-									!org.apache.commons.jxpath*,
-									!org.apache.commons.transaction.locking,
-									!org.apache.commons.vfs2*,
-									!org.apache.commons.transaction.util,
-									!org.apache.cxf*,
-									!org.apache.derby*,
-									!org.apache.directory.server.*,
-									!org.apache.jcs*,
-									!org.apache.log*,
-									!org.apache.openjpa.persistence,
-									!org.apache.struts.*,
-									!org.apache.tools.ant*,
-									!org.apache.torque.task,
-									!org.apache.xerces.*,
-									!org.aspectj.*,
-									!org.bouncycastle.asn1,
-									!org.codehaus.aspectwerkz.hook,
-									!org.codehaus.groovy.control,
-									!org.eclipse.*,
-									!org.gjt.xpp,
-									!org.hibernate*,
-									!org.jaxen.saxpath,
-									!org.jruby*,
-									!org.jvnet.fastinfoset,
-									!org.jvnet.staxex,
-									!org.mortbay.*,
-									!org.objectweb.asm.*,
-									!org.omg.*,
-									!org.quartz*,
-									!org.relaxng.datatype,
-									!org.saxpath,
-									!org.saxpath.helpers,
-									!org.xmlpull.v1,
-									!sun.io,
-									!sun.security.util,
-									!tyrex.*,
-									!weblogic.apache.xml.serialize,
-									!com.fasterxml*,
-									!com.ibm.uvm*,
-									!com.sun.syndication* ,
-									!org.joda.*,
-									!org.junit*,
-									!org.slf4j.ext*,
-									!org.slf4j.impl*,
-									!org.springframework.instrument,
-									!org.springframework.asm.*,
-									!org.springframework.oxm*,
-									*
-								</Import-Package>
-								<Export-Package>
-									org.apache.jetspeed.engine,
-									org.apache.jetspeed.login,
-									org.apache.jetspeed.manager,
-
-
-									org.apache.jetspeed.util,
-									org.apache.jetspeed.engine.servlet,
-									org.apache.jetspeed.container.session
-
-								</Export-Package>
-							</instructions>
-							<supportedProjectTypes>
-								<supportedProjectType>jar</supportedProjectType>
-								<supportedProjectType>war</supportedProjectType>
-								<supportedProjectType>bundle</supportedProjectType>
-							</supportedProjectTypes>
-						</configuration>
-
-
-					</plugin>
-				</plugins>
-			</build>
-
-		</profile>
-
 		<profile>
 			<id>libs</id>
 			<build>
@@ -743,78 +593,17 @@
 								<goals>
 									<goal>copy-dependencies</goal>
 								</goals>
-								<configuration>
-									<artifactItems>
-										<!-- <artifactItem> -->
-										<!-- <groupId>javax.portlet</groupId> -->
-										<!-- <artifactId>portlet-api</artifactId> -->
-										<!-- <version>2.0</version> -->
-										<!-- </artifactItem> -->
-
-										<!-- SHOULD BE PULLED BY PLUTO CONTAINER -->
-										<!-- <artifactItem> -->
-										<!-- <groupId>javax.ccpp</groupId> -->
-										<!-- <artifactId>ccpp</artifactId> -->
-										<!-- <version>1.0</version> -->
-										<!-- </artifactItem> -->
-
-										<!-- <artifactItem> -->
-										<!-- <groupId>javax.websocket</groupId> -->
-										<!-- <artifactId>javax.websocket-api</artifactId> -->
-										<!-- <version>1.0</version> -->
-										<!-- </artifactItem> -->
-
-										<!-- <artifactItem> -->
-										<!-- <groupId>org.apache.portals.pluto</groupId> -->
-										<!-- <artifactId>pluto-container-api</artifactId> -->
-										<!-- <version>${org.apache.pluto.version}</version> -->
-										<!-- </artifactItem> -->
-
-										<!-- <artifactItem> -->
-										<!-- <groupId>org.apache.portals.pluto</groupId> -->
-										<!-- <artifactId>pluto-container</artifactId> -->
-										<!-- <version>${org.apache.pluto.version}</version> -->
-										<!-- </artifactItem> -->
-
-										<!-- <artifactItem> -->
-										<!-- <groupId>org.apache.portals.pluto</groupId> -->
-										<!-- <artifactId>pluto-taglib</artifactId> -->
-										<!-- <version>${org.apache.pluto.version}</version> -->
-										<!-- </artifactItem> -->
-
-										<!-- <artifactItem> -->
-										<!-- <groupId>org.apache.portals.jetspeed-2</groupId> -->
-										<!-- <artifactId>jetspeed-api</artifactId> -->
-										<!-- <version>${jetspeed.version}</version> -->
-										<!-- </artifactItem> -->
-
-										<!-- <artifactItem> -->
-										<!-- <groupId>org.apache.portals.jetspeed-2</groupId> -->
-										<!-- <artifactId>jetspeed-commons</artifactId> -->
-										<!-- <version>${jetspeed.version}</version> -->
-										<!-- </artifactItem> -->
-
-										<!-- <artifactItem> -->
-										<!-- <groupId>org.apache.portals.bridges</groupId> -->
-										<!-- <artifactId>portals-bridges-common</artifactId> -->
-										<!-- <version>2.0</version> -->
-										<!-- </artifactItem> -->
-
-										<!-- <artifactItem> -->
-										<!-- <groupId>org.apache.portals.applications</groupId> -->
-										<!-- <artifactId>apa-logging</artifactId> -->
-										<!-- <version>1.0</version> -->
-										<!-- </artifactItem> -->
-									</artifactItems>
-									<outputDirectory>${jetspeed.tomcat.shared.lib}</outputDirectory>
-									<overWriteReleases>false</overWriteReleases>
-									<overWriteSnapshots>false</overWriteSnapshots>
-									<overWriteIfNewer>true</overWriteIfNewer>
-									<excludeTransitive>false</excludeTransitive>
-									<includeScope>provided</includeScope>
-								</configuration>
 							</execution>
 						</executions>
+						<configuration>
+							<skip>true</skip>
+							<outputDirectory>${jetspeed.tomcat.shared.lib}</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<excludeTransitive>false</excludeTransitive>
+							<includeScope>provided</includeScope>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>
@@ -824,57 +613,38 @@
 			<id>db</id>
 			<build>
 				<plugins>
-
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-antrun-plugin</artifactId>
 						<version>1.7</version>
 						<executions>
 							<execution>
-								<id>install-db</id>
-								<phase>process-classes</phase>
+								<id>setup-db</id>
+								<phase>process-resources</phase>
 								<goals>
 									<goal>run</goal>
 								</goals>
-								<configuration>
-
-									<target name="database-setup" description="Creates the database structure and inserts data into the database">
-
-										<path id="classpath">
-											<path refid="maven.plugin.classpath" />
-											<path refid="maven.runtime.classpath" />
-										</path>
-
-										<property name="compile_classpath" refid="classpath" />
-
-										<taskdef name="ddlToDatabase" classname="org.apache.ddlutils.task.DdlToDatabaseTask">
-											<classpath refid="classpath" />
-										</taskdef>
-
-										<ddlToDatabase>
-											<database driverClassName="${jetspeed.jdbc.driverClassName}" url="${jetspeed.jdbc.url}" username="${jetspeed.jdbc.username}"
-												password="${jetspeed.jdbc.password}" />
-											<fileset dir="src/sql/">
-												<include name="schema.xml" />
-											</fileset>
-											<createDatabase failonerror="true" />
-											<writeSchemaToDatabase />
-											<writeDataToDatabase datafile="src/sql/seeds/generated-data-min-jetui.xml" />
-										</ddlToDatabase>
-
-										<!-- <taskdef name="databaseToDdl" classname="org.apache.ddlutils.task.DatabaseToDdlTask"> -->
-										<!-- <classpath refid="classpath" /> -->
-										<!-- </taskdef> -->
-										<!-- <databaseToDdl modelName="MyModel"> -->
-										<!-- <database driverClassName="${jetspeed.jdbc.driverClassName}" url="${jetspeed.jdbc.url}" username="${jetspeed.jdbc.username}" -->
-										<!-- password="${jetspeed.jdbc.password}" /> -->
-										<!-- <writeSchemaToFile outputFile="generated-db-schema.xml" /> -->
-										<!-- <writeDataToFile outputFile="generated-data-min-jetui.xml" /> -->
-										<!-- </databaseToDdl> -->
-									</target>
-								</configuration>
 							</execution>
 						</executions>
+						<configuration>
+							<target name="database-setup" description="Creates the database structure and inserts data into the database">
+								<taskdef name="ddlToDatabase" classname="org.apache.ddlutils.task.DdlToDatabaseTask">
+									<classpath refid="maven.plugin.classpath" />
+									<classpath refid="maven.compile.classpath" />
+									<!-- <classpath refid="maven.runtime.classpath" /> -->
+								</taskdef>
+								<ddlToDatabase>
+									<database driverClassName="${jetspeed.jdbc.driverClassName}" url="${jetspeed.jdbc.url}" username="${jetspeed.jdbc.username}"
+										password="${jetspeed.jdbc.password}" />
+									<fileset dir="src/sql/">
+										<include name="schema.xml" />
+									</fileset>
+									<createDatabase failonerror="true" />
+									<writeSchemaToDatabase />
+									<writeDataToDatabase datafile="src/sql/seeds/generated-data-min-jetui.xml" />
+								</ddlToDatabase>
+							</target>
+						</configuration>
 						<dependencies>
 							<dependency>
 								<groupId>org.apache.ddlutils</groupId>
@@ -886,19 +656,31 @@
 								<artifactId>log4j</artifactId>
 								<version>1.2.17</version>
 							</dependency>
+							<!-- JDBCC DRIVERS -->
+							<dependency>
+								<groupId>mysql</groupId>
+								<artifactId>mysql-connector-java</artifactId>
+								<version>5.1.31</version>
+							</dependency>
 							<dependency>
 								<groupId>org.postgresql</groupId>
 								<artifactId>postgresql</artifactId>
 								<version>9.3-1100-jdbc41</version>
 							</dependency>
+							<dependency>
+								<groupId>org.apache.derby</groupId>
+								<artifactId>derby</artifactId>
+								<version>10.10.2.0</version>
+							</dependency>
+							<dependency>
+								<groupId>hsqldb</groupId>
+								<artifactId>hsqldb</artifactId>
+								<version>1.8.0.7</version>
+							</dependency>
 						</dependencies>
 					</plugin>
-
 				</plugins>
-
 			</build>
 		</profile>
 	</profiles>
-
-
 </project>
