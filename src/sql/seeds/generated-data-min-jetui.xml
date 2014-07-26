@@ -1,252 +1,252 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
-  <capability capability_id="7" capability="HTML_DOM"></capability>
-  <capability capability_id="9" capability="HTML_DOM_2"></capability>
-  <capability capability_id="17" capability="HTML_JAVA1_0"></capability>
-  <capability capability_id="18" capability="HTML_JAVA1_1"></capability>
-  <capability capability_id="19" capability="HTML_JAVA1_2"></capability>
-  <capability capability_id="21" capability="HTML_JAVASCRIPT_1_0"></capability>
-  <capability capability_id="22" capability="HTML_JAVASCRIPT_1_1"></capability>
-  <capability capability_id="23" capability="HTML_JAVASCRIPT_1_2"></capability>
-  <capability capability_id="25" capability="HTML_JSCRIPT"></capability>
-  <capability capability_id="26" capability="HTML_JSCRIPT1_0"></capability>
-  <capability capability_id="27" capability="HTML_JSCRIPT1_1"></capability>
-  <capability capability_id="28" capability="HTML_JSCRIPT1_2"></capability>
-  <capability capability_id="33" capability="HTML_XML"></capability>
-  <capability capability_id="34" capability="HTML_XSL"></capability>
-  <capability capability_id="35" capability="HTTP_1_1"></capability>
-  <capability capability_id="37" capability="WML_1_0"></capability>
-  <capability capability_id="38" capability="WML_1_1"></capability>
-  <capability capability_id="39" capability="WML_TABLE"></capability>
-  <capability capability_id="40" capability="XML_XINCLUDE"></capability>
-  <capability capability_id="41" capability="XML_XPATH"></capability>
-  <capability capability_id="42" capability="XML_XSLT"></capability>
-  <capability capability_id="3" capability="HTML_ACTIVEX"></capability>
-  <capability capability_id="10" capability="HTML_DOM_IE"></capability>
-  <capability capability_id="29" capability="HTML_LAYER"></capability>
-  <capability capability_id="11" capability="HTML_DOM_NS4"></capability>
-  <capability capability_id="2" capability="HTML_4_0"></capability>
-  <capability capability_id="16" capability="HTML_JAVA"></capability>
-  <capability capability_id="24" capability="HTML_JAVA_JRE"></capability>
-  <capability capability_id="20" capability="HTML_JAVASCRIPT"></capability>
-  <capability capability_id="30" capability="HTML_NESTED_TABLE"></capability>
-  <capability capability_id="13" capability="HTML_FRAME"></capability>
-  <capability capability_id="14" capability="HTML_IFRAME"></capability>
-  <capability capability_id="5" capability="HTML_CSS2"></capability>
-  <capability capability_id="6" capability="HTML_CSSP"></capability>
-  <capability capability_id="8" capability="HTML_DOM_1"></capability>
-  <capability capability_id="31" capability="HTML_PLUGIN"></capability>
-  <capability capability_id="1" capability="HTML_3_2"></capability>
-  <capability capability_id="32" capability="HTML_TABLE"></capability>
-  <capability capability_id="12" capability="HTML_FORM"></capability>
-  <capability capability_id="15" capability="HTML_IMAGE"></capability>
-  <capability capability_id="4" capability="HTML_CSS1"></capability>
-  <capability capability_id="36" capability="HTTP_COOKIE"></capability>
-  <client client_id="1" eval_order="1" name="ie5mac" user_agent_pattern=".*MSIE 5.*Mac.*" manufacturer="Microsoft" model="None" version="5.*" preferred_mimetype_id="2"></client>
-  <client client_id="2" eval_order="2" name="safari" user_agent_pattern=".*Mac.*Safari.*" manufacturer="Apple" model="None" version="5.*" preferred_mimetype_id="2"></client>
-  <client client_id="3" eval_order="3" name="ie6" user_agent_pattern=".*MSIE 6.*" manufacturer="Microsoft" model="None" version="6.0" preferred_mimetype_id="2"></client>
-  <client client_id="4" eval_order="4" name="ie5" user_agent_pattern=".*MSIE 5.*" manufacturer="Microsoft" model="None" version="5.5" preferred_mimetype_id="2"></client>
-  <client client_id="5" eval_order="5" name="ns4" user_agent_pattern=".*Mozilla/4.*" manufacturer="Netscape" model="None" version="4.75" preferred_mimetype_id="2"></client>
-  <client client_id="6" eval_order="6" name="mozilla" user_agent_pattern=".*Mozilla/5.*" manufacturer="Mozilla" model="Mozilla" version="1.x" preferred_mimetype_id="2"></client>
-  <client client_id="7" eval_order="7" name="lynx" user_agent_pattern="Lynx.*" manufacturer="GNU" model="None" version="" preferred_mimetype_id="2"></client>
-  <client client_id="8" eval_order="8" name="nokia_generic" user_agent_pattern="Nokia.*" manufacturer="Nokia" model="Generic" version="" preferred_mimetype_id="3"></client>
-  <client client_id="9" eval_order="9" name="xhtml-basic" user_agent_pattern="DoCoMo/2.0.*|KDDI-.*UP.Browser.*|J-PHONE/5.0.*|Vodafone/1.0/.*" manufacturer="WAP" model="Generic" version="" preferred_mimetype_id="1"></client>
-  <client client_id="10" eval_order="10" name="up" user_agent_pattern="UP.*|.*UP.Browser.*" manufacturer="United Planet" model="Generic" version="" preferred_mimetype_id="3"></client>
-  <client client_id="11" eval_order="11" name="sonyericsson" user_agent_pattern="Ercis.*|SonyE.*" manufacturer="SonyEricsson" model="Generic" version="" preferred_mimetype_id="3"></client>
-  <client client_id="12" eval_order="12" name="wapalizer" user_agent_pattern="Wapalizer.*" manufacturer="Wapalizer" model="Generic" version="" preferred_mimetype_id="3"></client>
-  <client client_id="13" eval_order="13" name="klondike" user_agent_pattern="Klondike.*" manufacturer="Klondike" model="Generic" version="" preferred_mimetype_id="3"></client>
-  <client client_id="14" eval_order="14" name="wml_generic" user_agent_pattern=".*WML.*|.*WAP.*|.*Wap.*|.*wml.*" manufacturer="Generic" model="Generic" version="" preferred_mimetype_id="3"></client>
-  <client client_id="15" eval_order="15" name="vxml_generic" user_agent_pattern=".*VoiceXML.*" manufacturer="Generic" model="Generic" version="" preferred_mimetype_id="4"></client>
-  <client client_id="16" eval_order="16" name="nuance" user_agent_pattern="Nuance.*" manufacturer="Nuance" model="Generic" version="" preferred_mimetype_id="4"></client>
-  <client client_id="17" eval_order="17" name="agentxml" user_agent_pattern="agentxml/1.0.*" manufacturer="Unknown" model="Generic" version="" preferred_mimetype_id="6"></client>
-  <client client_id="18" eval_order="18" name="opera7" user_agent_pattern=".*Opera/7.*" manufacturer="Opera" model="Opera7" version="7.x" preferred_mimetype_id="2"></client>
-  <client client_id="19" eval_order="4" name="ie4ppc" user_agent_pattern=".*MSIE 4.*Windows CE.*" manufacturer="Microsoft" model="None" version="4.01" preferred_mimetype_id="2"></client>
-  <client_to_capability client_id="1" capability_id="1"></client_to_capability>
-  <client_to_capability client_id="1" capability_id="16"></client_to_capability>
-  <client_to_capability client_id="1" capability_id="20"></client_to_capability>
-  <client_to_capability client_id="1" capability_id="32"></client_to_capability>
-  <client_to_capability client_id="1" capability_id="12"></client_to_capability>
-  <client_to_capability client_id="1" capability_id="13"></client_to_capability>
-  <client_to_capability client_id="1" capability_id="15"></client_to_capability>
-  <client_to_capability client_id="1" capability_id="31"></client_to_capability>
-  <client_to_capability client_id="1" capability_id="4"></client_to_capability>
-  <client_to_capability client_id="1" capability_id="11"></client_to_capability>
-  <client_to_capability client_id="1" capability_id="36"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="1"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="16"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="20"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="32"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="30"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="12"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="13"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="15"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="3"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="4"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="5"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="6"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="14"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="10"></client_to_capability>
-  <client_to_capability client_id="2" capability_id="36"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="1"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="16"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="20"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="32"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="30"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="12"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="13"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="15"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="3"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="4"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="5"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="6"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="14"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="10"></client_to_capability>
-  <client_to_capability client_id="3" capability_id="36"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="1"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="16"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="20"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="32"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="30"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="12"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="13"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="15"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="3"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="4"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="5"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="6"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="14"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="10"></client_to_capability>
-  <client_to_capability client_id="4" capability_id="36"></client_to_capability>
-  <client_to_capability client_id="5" capability_id="1"></client_to_capability>
-  <client_to_capability client_id="5" capability_id="16"></client_to_capability>
-  <client_to_capability client_id="5" capability_id="20"></client_to_capability>
-  <client_to_capability client_id="5" capability_id="32"></client_to_capability>
-  <client_to_capability client_id="5" capability_id="12"></client_to_capability>
-  <client_to_capability client_id="5" capability_id="13"></client_to_capability>
-  <client_to_capability client_id="5" capability_id="15"></client_to_capability>
-  <client_to_capability client_id="5" capability_id="4"></client_to_capability>
-  <client_to_capability client_id="5" capability_id="29"></client_to_capability>
-  <client_to_capability client_id="5" capability_id="31"></client_to_capability>
-  <client_to_capability client_id="5" capability_id="11"></client_to_capability>
-  <client_to_capability client_id="5" capability_id="36"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="1"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="2"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="16"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="24"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="20"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="32"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="30"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="12"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="13"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="14"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="15"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="4"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="5"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="6"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="8"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="31"></client_to_capability>
-  <client_to_capability client_id="6" capability_id="36"></client_to_capability>
-  <client_to_capability client_id="7" capability_id="32"></client_to_capability>
-  <client_to_capability client_id="7" capability_id="30"></client_to_capability>
-  <client_to_capability client_id="7" capability_id="12"></client_to_capability>
-  <client_to_capability client_id="7" capability_id="13"></client_to_capability>
-  <client_to_capability client_id="7" capability_id="36"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="1"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="2"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="32"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="16"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="24"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="20"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="30"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="12"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="13"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="15"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="14"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="4"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="5"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="6"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="8"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="36"></client_to_capability>
-  <client_to_capability client_id="18" capability_id="31"></client_to_capability>
-  <client_to_capability client_id="19" capability_id="1"></client_to_capability>
-  <client_to_capability client_id="19" capability_id="32"></client_to_capability>
-  <client_to_capability client_id="19" capability_id="12"></client_to_capability>
-  <client_to_capability client_id="19" capability_id="15"></client_to_capability>
-  <client_to_capability client_id="19" capability_id="4"></client_to_capability>
-  <client_to_capability client_id="19" capability_id="36"></client_to_capability>
-  <client_to_mimetype client_id="1" mimetype_id="2"></client_to_mimetype>
-  <client_to_mimetype client_id="2" mimetype_id="2"></client_to_mimetype>
-  <client_to_mimetype client_id="2" mimetype_id="6"></client_to_mimetype>
-  <client_to_mimetype client_id="2" mimetype_id="5"></client_to_mimetype>
-  <client_to_mimetype client_id="3" mimetype_id="2"></client_to_mimetype>
-  <client_to_mimetype client_id="3" mimetype_id="6"></client_to_mimetype>
-  <client_to_mimetype client_id="3" mimetype_id="5"></client_to_mimetype>
-  <client_to_mimetype client_id="4" mimetype_id="2"></client_to_mimetype>
-  <client_to_mimetype client_id="4" mimetype_id="6"></client_to_mimetype>
-  <client_to_mimetype client_id="5" mimetype_id="2"></client_to_mimetype>
-  <client_to_mimetype client_id="6" mimetype_id="2"></client_to_mimetype>
-  <client_to_mimetype client_id="6" mimetype_id="5"></client_to_mimetype>
-  <client_to_mimetype client_id="6" mimetype_id="6"></client_to_mimetype>
-  <client_to_mimetype client_id="7" mimetype_id="2"></client_to_mimetype>
-  <client_to_mimetype client_id="8" mimetype_id="3"></client_to_mimetype>
-  <client_to_mimetype client_id="9" mimetype_id="1"></client_to_mimetype>
-  <client_to_mimetype client_id="10" mimetype_id="3"></client_to_mimetype>
-  <client_to_mimetype client_id="11" mimetype_id="3"></client_to_mimetype>
-  <client_to_mimetype client_id="12" mimetype_id="3"></client_to_mimetype>
-  <client_to_mimetype client_id="13" mimetype_id="3"></client_to_mimetype>
-  <client_to_mimetype client_id="14" mimetype_id="3"></client_to_mimetype>
-  <client_to_mimetype client_id="15" mimetype_id="4"></client_to_mimetype>
-  <client_to_mimetype client_id="16" mimetype_id="4"></client_to_mimetype>
-  <client_to_mimetype client_id="17" mimetype_id="6"></client_to_mimetype>
-  <client_to_mimetype client_id="18" mimetype_id="2"></client_to_mimetype>
-  <client_to_mimetype client_id="18" mimetype_id="6"></client_to_mimetype>
-  <client_to_mimetype client_id="18" mimetype_id="5"></client_to_mimetype>
-  <client_to_mimetype client_id="19" mimetype_id="2"></client_to_mimetype>
-  <media_type mediatype_id="1" name="html" character_set="UTF-8" title="HTML" description="Rich HTML for HTML 4.0 compliants browsers"></media_type>
-  <media_type mediatype_id="2" name="vxml" character_set="UTF-8" title="VoiceXML" description="Format suitable for use with an audio VoiceXML server"></media_type>
-  <media_type mediatype_id="3" name="wml" character_set="UTF-8" title="WML" description="Format for mobile phones and PDAs compatible with WML 1.1"></media_type>
-  <media_type mediatype_id="4" name="xhtml-basic" character_set="UTF-8" title="XHTML" description="XHTML Basic"></media_type>
-  <media_type mediatype_id="5" name="xml" character_set="" title="XML" description="XML 1.0"></media_type>
-  <media_type mediatype_id="6" name="html-basic" character_set="UTF-8" title="HTML-BASIC" description="Simple HTML for Handheld PC browsers such as Pocket IE"></media_type>
-  <mediatype_to_mimetype mediatype_id="1" mimetype_id="2"></mediatype_to_mimetype>
-  <mediatype_to_mimetype mediatype_id="2" mimetype_id="4"></mediatype_to_mimetype>
-  <mediatype_to_mimetype mediatype_id="3" mimetype_id="3"></mediatype_to_mimetype>
-  <mediatype_to_mimetype mediatype_id="4" mimetype_id="1"></mediatype_to_mimetype>
-  <mediatype_to_mimetype mediatype_id="5" mimetype_id="6"></mediatype_to_mimetype>
-  <mediatype_to_mimetype mediatype_id="6" mimetype_id="2"></mediatype_to_mimetype>
-  <mimetype mimetype_id="1" name="application/xhtml+xml"></mimetype>
-  <mimetype mimetype_id="3" name="text/vnd.wap.wml"></mimetype>
-  <mimetype mimetype_id="4" name="text/vxml"></mimetype>
-  <mimetype mimetype_id="6" name="text/xml"></mimetype>
-  <mimetype mimetype_id="5" name="text/xhtml"></mimetype>
-  <mimetype mimetype_id="2" name="text/html"></mimetype>
-  <ojb_hl_seq tablename="SEQ_CAPABILITY" fieldname="deprecatedColumn" max_key="60" grab_size="20" version="3"></ojb_hl_seq>
-  <ojb_hl_seq tablename="SEQ_MIMETYPE" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"></ojb_hl_seq>
-  <ojb_hl_seq tablename="SEQ_MEDIA_TYPE" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"></ojb_hl_seq>
-  <ojb_hl_seq tablename="SEQ_CLIENT" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"></ojb_hl_seq>
-  <ojb_hl_seq tablename="SEQ_SECURITY_DOMAIN" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"></ojb_hl_seq>
-  <ojb_hl_seq tablename="SEQ_SECURITY_PRINCIPAL" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"></ojb_hl_seq>
-  <ojb_hl_seq tablename="SEQ_SECURITY_CREDENTIAL" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"></ojb_hl_seq>
-  <ojb_hl_seq tablename="SEQ_SECURITY_ATTRIBUTE" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"></ojb_hl_seq>
-  <ojb_hl_seq tablename="SEQ_RULE_CRITERION" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"></ojb_hl_seq>
-  <profiling_rule rule_id="j2" class_name="org.apache.jetspeed.profiler.rules.impl.StandardProfilingRule" title="The default profiling rule for users and mediatype minus language and country."></profiling_rule>
-  <security_domain domain_id="1" domain_name="[default]" remote="0" enabled="1"></security_domain>
-  <security_domain domain_id="2" domain_name="[system]" remote="0" enabled="1"></security_domain>
-  <rule_criterion criterion_id="1" rule_id="j2" fallback_order="1" request_type="group.role.user" name="user" fallback_type="0"></rule_criterion>
-  <rule_criterion criterion_id="2" rule_id="j2" fallback_order="2" request_type="mediatype" name="mediatype" fallback_type="1"></rule_criterion>
-  <rule_criterion criterion_id="3" rule_id="j2" fallback_order="0" request_type="path.session" name="page" column_value="default-page" fallback_type="0"></rule_criterion>
-  <security_principal principal_id="1" principal_type="role" principal_name="user" is_mapped="1" is_enabled="1" is_readonly="0" is_removable="1" creation_date="2014-07-24 04:23:37.489" modified_date="2014-07-24 04:23:37.489" domain_id="1"></security_principal>
-  <security_principal principal_id="2" principal_type="role" principal_name="guest" is_mapped="1" is_enabled="1" is_readonly="0" is_removable="1" creation_date="2014-07-24 04:23:37.494" modified_date="2014-07-24 04:23:37.494" domain_id="1"></security_principal>
-  <security_principal principal_id="3" principal_type="role" principal_name="admin" is_mapped="1" is_enabled="1" is_readonly="0" is_removable="1" creation_date="2014-07-24 04:23:37.497" modified_date="2014-07-24 04:23:37.497" domain_id="1"></security_principal>
-  <security_principal principal_id="4" principal_type="user" principal_name="admin" is_mapped="1" is_enabled="1" is_readonly="0" is_removable="1" creation_date="2014-07-24 04:23:37.5" modified_date="2014-07-24 04:23:37.53" domain_id="1"></security_principal>
-  <security_principal principal_id="5" principal_type="user" principal_name="guest" is_mapped="1" is_enabled="1" is_readonly="0" is_removable="1" creation_date="2014-07-24 04:23:37.534" modified_date="2014-07-24 04:23:37.541" domain_id="1"></security_principal>
-  <security_attribute attr_id="1" principal_id="4" attr_name="user.name.family" attr_value="Administrator"></security_attribute>
-  <security_attribute attr_id="2" principal_id="4" attr_name="user.name.given" attr_value="John"></security_attribute>
-  <security_attribute attr_id="3" principal_id="4" attr_name="org.apache.jetspeed.prefered.locale" attr_value="en,,"></security_attribute>
-  <security_attribute attr_id="4" principal_id="5" attr_name="user.name.family" attr_value="Guest"></security_attribute>
-  <security_attribute attr_id="5" principal_id="5" attr_name="user.name.given" attr_value=""></security_attribute>
-  <security_credential credential_id="1" principal_id="4" credential_value="liiHgKcA1sEBisdWUN9fLEc2gBo=" type="0" update_allowed="1" is_state_readonly="0" update_required="1" is_encoded="1" is_enabled="1" auth_failures="0" is_expired="0" creation_date="2014-07-24 04:23:37.511" modified_date="2014-07-24 04:23:37.514"></security_credential>
-  <security_principal_assoc assoc_name="isMemberOf" from_principal_id="4" to_principal_id="1"></security_principal_assoc>
-  <security_principal_assoc assoc_name="isMemberOf" from_principal_id="4" to_principal_id="3"></security_principal_assoc>
-  <security_principal_assoc assoc_name="isMemberOf" from_principal_id="5" to_principal_id="2"></security_principal_assoc>
+  <capability capability_id="7" capability="HTML_DOM"/>
+  <capability capability_id="9" capability="HTML_DOM_2"/>
+  <capability capability_id="17" capability="HTML_JAVA1_0"/>
+  <capability capability_id="18" capability="HTML_JAVA1_1"/>
+  <capability capability_id="19" capability="HTML_JAVA1_2"/>
+  <capability capability_id="21" capability="HTML_JAVASCRIPT_1_0"/>
+  <capability capability_id="22" capability="HTML_JAVASCRIPT_1_1"/>
+  <capability capability_id="23" capability="HTML_JAVASCRIPT_1_2"/>
+  <capability capability_id="25" capability="HTML_JSCRIPT"/>
+  <capability capability_id="26" capability="HTML_JSCRIPT1_0"/>
+  <capability capability_id="27" capability="HTML_JSCRIPT1_1"/>
+  <capability capability_id="28" capability="HTML_JSCRIPT1_2"/>
+  <capability capability_id="33" capability="HTML_XML"/>
+  <capability capability_id="34" capability="HTML_XSL"/>
+  <capability capability_id="35" capability="HTTP_1_1"/>
+  <capability capability_id="37" capability="WML_1_0"/>
+  <capability capability_id="38" capability="WML_1_1"/>
+  <capability capability_id="39" capability="WML_TABLE"/>
+  <capability capability_id="40" capability="XML_XINCLUDE"/>
+  <capability capability_id="41" capability="XML_XPATH"/>
+  <capability capability_id="42" capability="XML_XSLT"/>
+  <capability capability_id="3" capability="HTML_ACTIVEX"/>
+  <capability capability_id="10" capability="HTML_DOM_IE"/>
+  <capability capability_id="29" capability="HTML_LAYER"/>
+  <capability capability_id="11" capability="HTML_DOM_NS4"/>
+  <capability capability_id="2" capability="HTML_4_0"/>
+  <capability capability_id="16" capability="HTML_JAVA"/>
+  <capability capability_id="24" capability="HTML_JAVA_JRE"/>
+  <capability capability_id="20" capability="HTML_JAVASCRIPT"/>
+  <capability capability_id="30" capability="HTML_NESTED_TABLE"/>
+  <capability capability_id="13" capability="HTML_FRAME"/>
+  <capability capability_id="14" capability="HTML_IFRAME"/>
+  <capability capability_id="5" capability="HTML_CSS2"/>
+  <capability capability_id="6" capability="HTML_CSSP"/>
+  <capability capability_id="8" capability="HTML_DOM_1"/>
+  <capability capability_id="31" capability="HTML_PLUGIN"/>
+  <capability capability_id="1" capability="HTML_3_2"/>
+  <capability capability_id="32" capability="HTML_TABLE"/>
+  <capability capability_id="12" capability="HTML_FORM"/>
+  <capability capability_id="15" capability="HTML_IMAGE"/>
+  <capability capability_id="4" capability="HTML_CSS1"/>
+  <capability capability_id="36" capability="HTTP_COOKIE"/>
+  <client client_id="1" eval_order="1" name="ie5mac" user_agent_pattern=".*MSIE 5.*Mac.*" manufacturer="Microsoft" model="None" version="5.*" preferred_mimetype_id="2"/>
+  <client client_id="2" eval_order="2" name="safari" user_agent_pattern=".*Mac.*Safari.*" manufacturer="Apple" model="None" version="5.*" preferred_mimetype_id="2"/>
+  <client client_id="3" eval_order="3" name="ie6" user_agent_pattern=".*MSIE 6.*" manufacturer="Microsoft" model="None" version="6.0" preferred_mimetype_id="2"/>
+  <client client_id="4" eval_order="4" name="ie5" user_agent_pattern=".*MSIE 5.*" manufacturer="Microsoft" model="None" version="5.5" preferred_mimetype_id="2"/>
+  <client client_id="5" eval_order="5" name="ns4" user_agent_pattern=".*Mozilla/4.*" manufacturer="Netscape" model="None" version="4.75" preferred_mimetype_id="2"/>
+  <client client_id="6" eval_order="6" name="mozilla" user_agent_pattern=".*Mozilla/5.*" manufacturer="Mozilla" model="Mozilla" version="1.x" preferred_mimetype_id="2"/>
+  <client client_id="7" eval_order="7" name="lynx" user_agent_pattern="Lynx.*" manufacturer="GNU" model="None" version="" preferred_mimetype_id="2"/>
+  <client client_id="8" eval_order="8" name="nokia_generic" user_agent_pattern="Nokia.*" manufacturer="Nokia" model="Generic" version="" preferred_mimetype_id="3"/>
+  <client client_id="9" eval_order="9" name="xhtml-basic" user_agent_pattern="DoCoMo/2.0.*|KDDI-.*UP.Browser.*|J-PHONE/5.0.*|Vodafone/1.0/.*" manufacturer="WAP" model="Generic" version="" preferred_mimetype_id="1"/>
+  <client client_id="10" eval_order="10" name="up" user_agent_pattern="UP.*|.*UP.Browser.*" manufacturer="United Planet" model="Generic" version="" preferred_mimetype_id="3"/>
+  <client client_id="11" eval_order="11" name="sonyericsson" user_agent_pattern="Ercis.*|SonyE.*" manufacturer="SonyEricsson" model="Generic" version="" preferred_mimetype_id="3"/>
+  <client client_id="12" eval_order="12" name="wapalizer" user_agent_pattern="Wapalizer.*" manufacturer="Wapalizer" model="Generic" version="" preferred_mimetype_id="3"/>
+  <client client_id="13" eval_order="13" name="klondike" user_agent_pattern="Klondike.*" manufacturer="Klondike" model="Generic" version="" preferred_mimetype_id="3"/>
+  <client client_id="14" eval_order="14" name="wml_generic" user_agent_pattern=".*WML.*|.*WAP.*|.*Wap.*|.*wml.*" manufacturer="Generic" model="Generic" version="" preferred_mimetype_id="3"/>
+  <client client_id="15" eval_order="15" name="vxml_generic" user_agent_pattern=".*VoiceXML.*" manufacturer="Generic" model="Generic" version="" preferred_mimetype_id="4"/>
+  <client client_id="16" eval_order="16" name="nuance" user_agent_pattern="Nuance.*" manufacturer="Nuance" model="Generic" version="" preferred_mimetype_id="4"/>
+  <client client_id="17" eval_order="17" name="agentxml" user_agent_pattern="agentxml/1.0.*" manufacturer="Unknown" model="Generic" version="" preferred_mimetype_id="6"/>
+  <client client_id="18" eval_order="18" name="opera7" user_agent_pattern=".*Opera/7.*" manufacturer="Opera" model="Opera7" version="7.x" preferred_mimetype_id="2"/>
+  <client client_id="19" eval_order="4" name="ie4ppc" user_agent_pattern=".*MSIE 4.*Windows CE.*" manufacturer="Microsoft" model="None" version="4.01" preferred_mimetype_id="2"/>
+  <client_to_capability client_id="1" capability_id="1"/>
+  <client_to_capability client_id="1" capability_id="16"/>
+  <client_to_capability client_id="1" capability_id="20"/>
+  <client_to_capability client_id="1" capability_id="32"/>
+  <client_to_capability client_id="1" capability_id="12"/>
+  <client_to_capability client_id="1" capability_id="13"/>
+  <client_to_capability client_id="1" capability_id="15"/>
+  <client_to_capability client_id="1" capability_id="31"/>
+  <client_to_capability client_id="1" capability_id="4"/>
+  <client_to_capability client_id="1" capability_id="11"/>
+  <client_to_capability client_id="1" capability_id="36"/>
+  <client_to_capability client_id="2" capability_id="1"/>
+  <client_to_capability client_id="2" capability_id="16"/>
+  <client_to_capability client_id="2" capability_id="20"/>
+  <client_to_capability client_id="2" capability_id="32"/>
+  <client_to_capability client_id="2" capability_id="30"/>
+  <client_to_capability client_id="2" capability_id="12"/>
+  <client_to_capability client_id="2" capability_id="13"/>
+  <client_to_capability client_id="2" capability_id="15"/>
+  <client_to_capability client_id="2" capability_id="3"/>
+  <client_to_capability client_id="2" capability_id="4"/>
+  <client_to_capability client_id="2" capability_id="5"/>
+  <client_to_capability client_id="2" capability_id="6"/>
+  <client_to_capability client_id="2" capability_id="14"/>
+  <client_to_capability client_id="2" capability_id="10"/>
+  <client_to_capability client_id="2" capability_id="36"/>
+  <client_to_capability client_id="3" capability_id="1"/>
+  <client_to_capability client_id="3" capability_id="16"/>
+  <client_to_capability client_id="3" capability_id="20"/>
+  <client_to_capability client_id="3" capability_id="32"/>
+  <client_to_capability client_id="3" capability_id="30"/>
+  <client_to_capability client_id="3" capability_id="12"/>
+  <client_to_capability client_id="3" capability_id="13"/>
+  <client_to_capability client_id="3" capability_id="15"/>
+  <client_to_capability client_id="3" capability_id="3"/>
+  <client_to_capability client_id="3" capability_id="4"/>
+  <client_to_capability client_id="3" capability_id="5"/>
+  <client_to_capability client_id="3" capability_id="6"/>
+  <client_to_capability client_id="3" capability_id="14"/>
+  <client_to_capability client_id="3" capability_id="10"/>
+  <client_to_capability client_id="3" capability_id="36"/>
+  <client_to_capability client_id="4" capability_id="1"/>
+  <client_to_capability client_id="4" capability_id="16"/>
+  <client_to_capability client_id="4" capability_id="20"/>
+  <client_to_capability client_id="4" capability_id="32"/>
+  <client_to_capability client_id="4" capability_id="30"/>
+  <client_to_capability client_id="4" capability_id="12"/>
+  <client_to_capability client_id="4" capability_id="13"/>
+  <client_to_capability client_id="4" capability_id="15"/>
+  <client_to_capability client_id="4" capability_id="3"/>
+  <client_to_capability client_id="4" capability_id="4"/>
+  <client_to_capability client_id="4" capability_id="5"/>
+  <client_to_capability client_id="4" capability_id="6"/>
+  <client_to_capability client_id="4" capability_id="14"/>
+  <client_to_capability client_id="4" capability_id="10"/>
+  <client_to_capability client_id="4" capability_id="36"/>
+  <client_to_capability client_id="5" capability_id="1"/>
+  <client_to_capability client_id="5" capability_id="16"/>
+  <client_to_capability client_id="5" capability_id="20"/>
+  <client_to_capability client_id="5" capability_id="32"/>
+  <client_to_capability client_id="5" capability_id="12"/>
+  <client_to_capability client_id="5" capability_id="13"/>
+  <client_to_capability client_id="5" capability_id="15"/>
+  <client_to_capability client_id="5" capability_id="4"/>
+  <client_to_capability client_id="5" capability_id="29"/>
+  <client_to_capability client_id="5" capability_id="31"/>
+  <client_to_capability client_id="5" capability_id="11"/>
+  <client_to_capability client_id="5" capability_id="36"/>
+  <client_to_capability client_id="6" capability_id="1"/>
+  <client_to_capability client_id="6" capability_id="2"/>
+  <client_to_capability client_id="6" capability_id="16"/>
+  <client_to_capability client_id="6" capability_id="24"/>
+  <client_to_capability client_id="6" capability_id="20"/>
+  <client_to_capability client_id="6" capability_id="32"/>
+  <client_to_capability client_id="6" capability_id="30"/>
+  <client_to_capability client_id="6" capability_id="12"/>
+  <client_to_capability client_id="6" capability_id="13"/>
+  <client_to_capability client_id="6" capability_id="14"/>
+  <client_to_capability client_id="6" capability_id="15"/>
+  <client_to_capability client_id="6" capability_id="4"/>
+  <client_to_capability client_id="6" capability_id="5"/>
+  <client_to_capability client_id="6" capability_id="6"/>
+  <client_to_capability client_id="6" capability_id="8"/>
+  <client_to_capability client_id="6" capability_id="31"/>
+  <client_to_capability client_id="6" capability_id="36"/>
+  <client_to_capability client_id="7" capability_id="32"/>
+  <client_to_capability client_id="7" capability_id="30"/>
+  <client_to_capability client_id="7" capability_id="12"/>
+  <client_to_capability client_id="7" capability_id="13"/>
+  <client_to_capability client_id="7" capability_id="36"/>
+  <client_to_capability client_id="18" capability_id="1"/>
+  <client_to_capability client_id="18" capability_id="2"/>
+  <client_to_capability client_id="18" capability_id="32"/>
+  <client_to_capability client_id="18" capability_id="16"/>
+  <client_to_capability client_id="18" capability_id="24"/>
+  <client_to_capability client_id="18" capability_id="20"/>
+  <client_to_capability client_id="18" capability_id="30"/>
+  <client_to_capability client_id="18" capability_id="12"/>
+  <client_to_capability client_id="18" capability_id="13"/>
+  <client_to_capability client_id="18" capability_id="15"/>
+  <client_to_capability client_id="18" capability_id="14"/>
+  <client_to_capability client_id="18" capability_id="4"/>
+  <client_to_capability client_id="18" capability_id="5"/>
+  <client_to_capability client_id="18" capability_id="6"/>
+  <client_to_capability client_id="18" capability_id="8"/>
+  <client_to_capability client_id="18" capability_id="36"/>
+  <client_to_capability client_id="18" capability_id="31"/>
+  <client_to_capability client_id="19" capability_id="1"/>
+  <client_to_capability client_id="19" capability_id="32"/>
+  <client_to_capability client_id="19" capability_id="12"/>
+  <client_to_capability client_id="19" capability_id="15"/>
+  <client_to_capability client_id="19" capability_id="4"/>
+  <client_to_capability client_id="19" capability_id="36"/>
+  <client_to_mimetype client_id="1" mimetype_id="2"/>
+  <client_to_mimetype client_id="2" mimetype_id="2"/>
+  <client_to_mimetype client_id="2" mimetype_id="6"/>
+  <client_to_mimetype client_id="2" mimetype_id="5"/>
+  <client_to_mimetype client_id="3" mimetype_id="2"/>
+  <client_to_mimetype client_id="3" mimetype_id="6"/>
+  <client_to_mimetype client_id="3" mimetype_id="5"/>
+  <client_to_mimetype client_id="4" mimetype_id="2"/>
+  <client_to_mimetype client_id="4" mimetype_id="6"/>
+  <client_to_mimetype client_id="5" mimetype_id="2"/>
+  <client_to_mimetype client_id="6" mimetype_id="2"/>
+  <client_to_mimetype client_id="6" mimetype_id="5"/>
+  <client_to_mimetype client_id="6" mimetype_id="6"/>
+  <client_to_mimetype client_id="7" mimetype_id="2"/>
+  <client_to_mimetype client_id="8" mimetype_id="3"/>
+  <client_to_mimetype client_id="9" mimetype_id="1"/>
+  <client_to_mimetype client_id="10" mimetype_id="3"/>
+  <client_to_mimetype client_id="11" mimetype_id="3"/>
+  <client_to_mimetype client_id="12" mimetype_id="3"/>
+  <client_to_mimetype client_id="13" mimetype_id="3"/>
+  <client_to_mimetype client_id="14" mimetype_id="3"/>
+  <client_to_mimetype client_id="15" mimetype_id="4"/>
+  <client_to_mimetype client_id="16" mimetype_id="4"/>
+  <client_to_mimetype client_id="17" mimetype_id="6"/>
+  <client_to_mimetype client_id="18" mimetype_id="2"/>
+  <client_to_mimetype client_id="18" mimetype_id="6"/>
+  <client_to_mimetype client_id="18" mimetype_id="5"/>
+  <client_to_mimetype client_id="19" mimetype_id="2"/>
+  <media_type mediatype_id="1" name="html" character_set="UTF-8" title="HTML" description="Rich HTML for HTML 4.0 compliants browsers"/>
+  <media_type mediatype_id="2" name="vxml" character_set="UTF-8" title="VoiceXML" description="Format suitable for use with an audio VoiceXML server"/>
+  <media_type mediatype_id="3" name="wml" character_set="UTF-8" title="WML" description="Format for mobile phones and PDAs compatible with WML 1.1"/>
+  <media_type mediatype_id="4" name="xhtml-basic" character_set="UTF-8" title="XHTML" description="XHTML Basic"/>
+  <media_type mediatype_id="5" name="xml" character_set="" title="XML" description="XML 1.0"/>
+  <media_type mediatype_id="6" name="html-basic" character_set="UTF-8" title="HTML-BASIC" description="Simple HTML for Handheld PC browsers such as Pocket IE"/>
+  <mediatype_to_mimetype mediatype_id="1" mimetype_id="2"/>
+  <mediatype_to_mimetype mediatype_id="2" mimetype_id="4"/>
+  <mediatype_to_mimetype mediatype_id="3" mimetype_id="3"/>
+  <mediatype_to_mimetype mediatype_id="4" mimetype_id="1"/>
+  <mediatype_to_mimetype mediatype_id="5" mimetype_id="6"/>
+  <mediatype_to_mimetype mediatype_id="6" mimetype_id="2"/>
+  <mimetype mimetype_id="1" name="application/xhtml+xml"/>
+  <mimetype mimetype_id="3" name="text/vnd.wap.wml"/>
+  <mimetype mimetype_id="4" name="text/vxml"/>
+  <mimetype mimetype_id="6" name="text/xml"/>
+  <mimetype mimetype_id="5" name="text/xhtml"/>
+  <mimetype mimetype_id="2" name="text/html"/>
+  <ojb_hl_seq tablename="SEQ_CAPABILITY" fieldname="deprecatedColumn" max_key="60" grab_size="20" version="3"/>
+  <ojb_hl_seq tablename="SEQ_MIMETYPE" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"/>
+  <ojb_hl_seq tablename="SEQ_MEDIA_TYPE" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"/>
+  <ojb_hl_seq tablename="SEQ_CLIENT" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"/>
+  <ojb_hl_seq tablename="SEQ_SECURITY_DOMAIN" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"/>
+  <ojb_hl_seq tablename="SEQ_SECURITY_PRINCIPAL" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"/>
+  <ojb_hl_seq tablename="SEQ_SECURITY_CREDENTIAL" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"/>
+  <ojb_hl_seq tablename="SEQ_SECURITY_ATTRIBUTE" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"/>
+  <ojb_hl_seq tablename="SEQ_RULE_CRITERION" fieldname="deprecatedColumn" max_key="20" grab_size="20" version="1"/>
+  <profiling_rule rule_id="j2" class_name="org.apache.jetspeed.profiler.rules.impl.StandardProfilingRule" title="The default profiling rule for users and mediatype minus language and country."/>
+  <security_domain domain_id="1" domain_name="[default]" remote="0" enabled="1"/>
+  <security_domain domain_id="2" domain_name="[system]" remote="0" enabled="1"/>
+  <rule_criterion criterion_id="1" rule_id="j2" fallback_order="1" request_type="group.role.user" name="user" fallback_type="0"/>
+  <rule_criterion criterion_id="2" rule_id="j2" fallback_order="2" request_type="mediatype" name="mediatype" fallback_type="1"/>
+  <rule_criterion criterion_id="3" rule_id="j2" fallback_order="0" request_type="path.session" name="page" column_value="default-page" fallback_type="0"/>
+  <security_principal principal_id="1" principal_type="role" principal_name="user" is_mapped="1" is_enabled="1" is_readonly="0" is_removable="1" creation_date="2014-07-24 04:23:37.489" modified_date="2014-07-24 04:23:37.489" domain_id="1"/>
+  <security_principal principal_id="2" principal_type="role" principal_name="guest" is_mapped="1" is_enabled="1" is_readonly="0" is_removable="1" creation_date="2014-07-24 04:23:37.494" modified_date="2014-07-24 04:23:37.494" domain_id="1"/>
+  <security_principal principal_id="3" principal_type="role" principal_name="admin" is_mapped="1" is_enabled="1" is_readonly="0" is_removable="1" creation_date="2014-07-24 04:23:37.497" modified_date="2014-07-24 04:23:37.497" domain_id="1"/>
+  <security_principal principal_id="4" principal_type="user" principal_name="admin" is_mapped="1" is_enabled="1" is_readonly="0" is_removable="1" creation_date="2014-07-24 04:23:37.5" modified_date="2014-07-24 04:23:37.53" domain_id="1"/>
+  <security_principal principal_id="5" principal_type="user" principal_name="guest" is_mapped="1" is_enabled="1" is_readonly="0" is_removable="1" creation_date="2014-07-24 04:23:37.534" modified_date="2014-07-24 04:23:37.541" domain_id="1"/>
+  <security_attribute attr_id="1" principal_id="4" attr_name="user.name.family" attr_value="Administrator"/>
+  <security_attribute attr_id="2" principal_id="4" attr_name="user.name.given" attr_value="John"/>
+  <security_attribute attr_id="3" principal_id="4" attr_name="org.apache.jetspeed.prefered.locale" attr_value="en,,"/>
+  <security_attribute attr_id="4" principal_id="5" attr_name="user.name.family" attr_value="Guest"/>
+  <security_attribute attr_id="5" principal_id="5" attr_name="user.name.given" attr_value=""/>
+  <security_credential credential_id="1" principal_id="4" credential_value="liiHgKcA1sEBisdWUN9fLEc2gBo=" type="0" update_allowed="1" is_state_readonly="0" update_required="1" is_encoded="1" is_enabled="1" auth_failures="0" is_expired="0" creation_date="2014-07-24 04:23:37.511" modified_date="2014-07-24 04:23:37.514"/>
+  <security_principal_assoc assoc_name="isMemberOf" from_principal_id="4" to_principal_id="1"/>
+  <security_principal_assoc assoc_name="isMemberOf" from_principal_id="4" to_principal_id="3"/>
+  <security_principal_assoc assoc_name="isMemberOf" from_principal_id="5" to_principal_id="2"/>
 </data>

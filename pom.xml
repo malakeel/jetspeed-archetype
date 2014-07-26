@@ -13,10 +13,11 @@
 
 	<properties>
 		<jetspeed.version>2.3.0-SNAPSHOT</jetspeed.version>
+		<!-- <jetspeed.version>2.2.2</jetspeed.version> -->
 		<org.apache.pluto.version>2.0.3</org.apache.pluto.version>
 		<geronimo-servlet_2.4_spec.version>1.1.1</geronimo-servlet_2.4_spec.version>
 		<portals.portlet2-api-spec.version>1.0</portals.portlet2-api-spec.version>
-		<portal.context.name>jetexpress2.3</portal.context.name>
+		<portal.context.path>jetexpress2.3</portal.context.path>
 
 		<slf4j.version>1.5.6</slf4j.version>
 		<org.apache.portals.logdir>${project.build.directory}/log.dir</org.apache.portals.logdir>
@@ -54,10 +55,10 @@
 				<!-- <artifactId>slf4j-log4j12</artifactId> -->
 				<!-- <groupId>org.slf4j</groupId> -->
 				<!-- </exclusion> -->
-				<exclusion>
-					<artifactId>jstl</artifactId>
-					<groupId>javax.servlet</groupId>
-				</exclusion>
+				<!-- <exclusion> -->
+				<!-- <artifactId>jstl</artifactId> -->
+				<!-- <groupId>javax.servlet</groupId> -->
+				<!-- </exclusion> -->
 				<!-- <exclusion> -->
 				<!-- <artifactId>log4j</artifactId> -->
 				<!-- <groupId>log4j</groupId> -->
@@ -332,12 +333,12 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>9.3-1100-jdbc41</version>
-			<scope>runtime</scope>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.postgresql</groupId> -->
+		<!-- <artifactId>postgresql</artifactId> -->
+		<!-- <version>9.3-1100-jdbc41</version> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>org.apache.derby</groupId>
@@ -346,16 +347,21 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- <dependency> -->
+		<!-- <groupId>hsqldb</groupId> -->
+		<!-- <artifactId>hsqldb</artifactId> -->
+		<!-- <version>1.8.0.7</version> -->
+		<!-- <scope>runtime</scope> -->
+		<!-- </dependency> -->
+
 		<dependency>
-			<groupId>hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>1.8.0.7</version>
-			<scope>runtime</scope>
+			<groupId>org.apache.portals.jetspeed-2</groupId>
+			<artifactId>j2-admin</artifactId>
+			<version>${jetspeed.version}</version>
+			<type>war</type>
+			<scope>provided</scope>
 		</dependency>
-
 	</dependencies>
-
-
 
 	<build>
 		<plugins>
@@ -368,26 +374,8 @@
 						<phase>process-resources</phase>
 						<goals>
 							<goal>copy</goal>
+							<goal>copy-dependencies</goal>
 						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>org.apache.portals.jetspeed-2</groupId>
-									<artifactId>j2-admin</artifactId>
-									<version>${jetspeed.version}</version>
-									<type>war</type>
-									<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/deploy</outputDirectory>
-								</artifactItem>
-								<artifactItem>
-									<groupId>org.apache.portals.jetspeed-2</groupId>
-									<artifactId>jetspeed-layouts</artifactId>
-									<version>${jetspeed.version}</version>
-									<type>war</type>
-									<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/deploy/local</outputDirectory>
-								</artifactItem>
-							</artifactItems>
-							<stripVersion>true</stripVersion>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -420,24 +408,163 @@
 				</executions>
 			</plugin>
 
+			<plugin>
+				<groupId>org.codehaus.cargo</groupId>
+				<artifactId>cargo-maven2-plugin</artifactId>
+				<version>1.4.8</version>
+
+				<configuration>
+					<container>
+						<containerId>tomcat7x</containerId>
+						<!-- <systemProperties> -->
+						<!-- <myproperty>myvalue</myproperty> -->
+						<!-- </systemProperties> -->
+						<systemProperties>
+							<org.apache.portals.logdir>${org.apache.portals.logdir}</org.apache.portals.logdir>
+						</systemProperties>
+
+						<zipUrlInstaller>
+							<url>http://archive.apache.org/dist/tomcat/tomcat-7/v7.0.30/bin/apache-tomcat-7.0.30.zip</url>
+						</zipUrlInstaller>
+
+
+						<dependencies>
+							<dependency>
+								<groupId>javax.servlet</groupId>
+								<artifactId>jstl</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<dependency>
+								<groupId>taglibs</groupId>
+								<artifactId>standard</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<dependency>
+								<groupId>taglibs</groupId>
+								<artifactId>request</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<dependency>
+								<groupId>javax.portlet</groupId>
+								<artifactId>portlet-api</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<dependency>
+								<groupId>javax.ccpp</groupId>
+								<artifactId>ccpp</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<dependency>
+								<groupId>javax.websocket</groupId>
+								<artifactId>javax.websocket-api</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<dependency>
+								<groupId>org.apache.portals.pluto</groupId>
+								<artifactId>pluto-container-api</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<dependency>
+								<groupId>org.apache.portals.pluto</groupId>
+								<artifactId>pluto-taglib</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<dependency>
+								<groupId>org.apache.portals.jetspeed-2</groupId>
+								<artifactId>jetspeed-api</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<dependency>
+								<groupId>org.apache.portals.jetspeed-2</groupId>
+								<artifactId>jetspeed-commons</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<dependency>
+								<groupId>org.apache.portals.bridges</groupId>
+								<artifactId>portals-bridges-common</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<dependency>
+								<groupId>org.apache.portals.applications</groupId>
+								<artifactId>apa-logging</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<!-- <dependency> -->
+							<!-- <groupId>mysql</groupId> -->
+							<!-- <artifactId>mysql-connector-java</artifactId> -->
+							<!-- <classpath>shared</classpath> -->
+							<!-- </dependency> -->
+							<!-- <dependency> -->
+							<!-- <groupId>org.postgresql</groupId> -->
+							<!-- <artifactId>postgresql</artifactId> -->
+							<!-- <classpath>shared</classpath> -->
+							<!-- </dependency> -->
+							<dependency>
+								<groupId>org.apache.derby</groupId>
+								<artifactId>derby</artifactId>
+								<classpath>shared</classpath>
+							</dependency>
+							<!-- <dependency> -->
+							<!-- <groupId>hsqldb</groupId> -->
+							<!-- <artifactId>hsqldb</artifactId> -->
+							<!-- <classpath>shared</classpath> -->
+							<!-- </dependency> -->
+						</dependencies>
+					</container>
+					<deployer>
+						<type>local</type>
+					</deployer>
+					<deployables>
+						<deployable>
+							<!-- <groupId>${project.groupId}</groupId> -->
+							<!-- <artifactId>${project.artifactId}</artifactId> -->
+							<groupId>myGroup</groupId>
+							<artifactId>artifactId}</artifactId>
+							<type>war</type>
+							<location>${project.build.directory}/${project.build.finalName}</location>
+							<properties>
+								<context>jetspeed</context>
+							</properties>
+						</deployable>
+						<deployable>
+							<groupId>org.apache.portals.jetspeed-2</groupId>
+							<artifactId>j2-admin</artifactId>
+							<!-- <version>${jetspeed.version}</version> -->
+							<type>war</type>
+						</deployable>
+					</deployables>
+				</configuration>
+
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
 				<configuration>
-					<path>/</path>
+					<path>/jetspeed</path>
 					<warSourceDirectory>${project.build.directory}/${project.build.finalName}</warSourceDirectory>
 
 					<systemProperties>
 						<org.apache.portals.logdir>${org.apache.portals.logdir}</org.apache.portals.logdir>
 					</systemProperties>
+
+
 					<!-- DISABLED ! Causing issues with sl4j-log4j jars in 2 different paths -->
 					<!-- <addWarDependenciesInClassloader>false</addWarDependenciesInClassloader> -->
-
+					<!-- <detail>true</detail> -->
 					<!-- <additionalClasspathDirs> -->
 					<!-- <additionalClasspathDir>${jetspeed.tomcat.shared.lib}</additionalClasspathDir> -->
 					<!-- </additionalClasspathDirs> -->
+
+					<webapps>
+						<webapp>
+							<groupId>org.apache.portals.jetspeed-2</groupId>
+							<artifactId>j2-admin</artifactId>
+							<version>${jetspeed.version}</version>
+							<type>war</type>
+						</webapp>
+					</webapps>
 				</configuration>
 				<dependencies>
 					<dependency>
@@ -500,21 +627,6 @@
 						<artifactId>apa-logging</artifactId>
 						<version>1.0</version>
 					</dependency>
-					<!-- <dependency> -->
-					<!-- <groupId>org.slf4j</groupId> -->
-					<!-- <artifactId>slf4j-api</artifactId> -->
-					<!-- <version>${slf4j.version}</version> -->
-					<!-- </dependency> -->
-					<!-- <dependency> -->
-					<!-- <groupId>org.slf4j</groupId> -->
-					<!-- <artifactId>slf4j-log4j12</artifactId> -->
-					<!-- <version>${slf4j.version}</version> -->
-					<!-- </dependency> -->
-					<!-- <dependency> -->
-					<!-- <groupId>org.slf4j</groupId> -->
-					<!-- <artifactId>jcl-over-slf4j</artifactId> -->
-					<!-- <version>${slf4j.version}</version> -->
-					<!-- </dependency> -->
 					<dependency>
 						<groupId>mysql</groupId>
 						<artifactId>mysql-connector-java</artifactId>
@@ -541,7 +653,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.4</version>
 				<executions>
 					<execution>
 						<id>default-war</id>
@@ -562,35 +673,6 @@
 						</goals>
 					</execution>
 				</executions>
-				<configuration>
-					<warName>jetspeed</warName>
-					<overlays>
-						<overlay>
-							<id>jetspeed</id>
-							<groupId>org.apache.portals.jetspeed-2</groupId>
-							<artifactId>jetspeed</artifactId>
-							<excludes>
-								<exclude>META-INF/MANIFEST.MF</exclude>
-								<exclude>WEB-INF/pages/**</exclude>
-								<exclude>WEB-INF/min-pages/**</exclude>
-								<exclude>WEB-INF/ui-pages/**</exclude>
-								<exclude>WEB-INF/min-ui-pages/</exclude>
-								<exclude>WEB-INF/conf/jetspeed.properties</exclude>
-								<exclude>WEB-INF/lib/*.jar</exclude>
-							</excludes>
-						</overlay>
-					</overlays>
-
-					<webResources>
-						<resource>
-							<filtering>true</filtering>
-							<directory>src/main/webapp</directory>
-							<includes>
-								<include>META-INF/context.xml</include>
-							</includes>
-						</resource>
-					</webResources>
-				</configuration>
 			</plugin>
 		</plugins>
 
@@ -600,13 +682,73 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
 					<version>2.8</version>
+
 					<configuration>
-						<outputDirectory>${jetspeed.tomcat.shared.lib}</outputDirectory>
+						<!-- <outputDirectory>${jetspeed.tomcat.shared.lib}</outputDirectory> -->
 						<overWriteReleases>false</overWriteReleases>
 						<overWriteSnapshots>false</overWriteSnapshots>
 						<overWriteIfNewer>true</overWriteIfNewer>
-						<excludeTransitive>false</excludeTransitive>
+						<!-- <excludeTransitive>false</excludeTransitive> -->
 						<includeScope>provided</includeScope>
+						<transitive>true</transitive>
+						<destination>${jetspeed.tomcat.shared.lib}</destination>
+						<artifactItems>
+
+							<artifactItem>
+								<groupId>org.apache.portals.jetspeed-2</groupId>
+								<artifactId>jetspeed-layouts</artifactId>
+								<version>${jetspeed.version}</version>
+								<type>war</type>
+								<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/deploy/local</outputDirectory>
+							</artifactItem>
+
+							<artifactItem>
+								<groupId>org.apache.portals.jetspeed-2</groupId>
+								<artifactId>j2-admin</artifactId>
+								<version>${jetspeed.version}</version>
+								<type>war</type>
+								<outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/deploy</outputDirectory>
+
+							</artifactItem>
+
+						</artifactItems>
+						<stripVersion>true</stripVersion>
+
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.4</version>
+					<configuration>
+						<warName>jetspeed</warName>
+						<overlays>
+							<overlay>
+								<id>jetspeed</id>
+								<groupId>org.apache.portals.jetspeed-2</groupId>
+								<artifactId>jetspeed</artifactId>
+								<excludes>
+									<exclude>META-INF/MANIFEST.MF</exclude>
+									<exclude>WEB-INF/pages/**</exclude>
+									<exclude>WEB-INF/min-pages/**</exclude>
+									<exclude>WEB-INF/ui-pages/**</exclude>
+									<exclude>WEB-INF/min-ui-pages/</exclude>
+									<exclude>WEB-INF/conf/jetspeed.properties</exclude>
+									<!-- <exclude>WEB-INF/lib/*.jar</exclude> -->
+								</excludes>
+							</overlay>
+						</overlays>
+
+						<webResources>
+							<resource>
+								<filtering>true</filtering>
+								<directory>src/main/webapp</directory>
+								<includes>
+									<include>META-INF/context.xml</include>
+								</includes>
+							</resource>
+						</webResources>
 					</configuration>
 				</plugin>
 			</plugins>
@@ -626,7 +768,7 @@
 						<executions>
 							<execution>
 								<id>setup-db</id>
-								<phase>process-resources</phase>
+								<phase>initialize</phase>
 								<goals>
 									<goal>run</goal>
 								</goals>
@@ -688,5 +830,20 @@
 				</plugins>
 			</build>
 		</profile>
+
+		<!-- <profile> -->
+<!-- <id>debug</id> -->
+		<!-- <activation> -->
+		<!-- </activation> -->
+		<!-- <build> -->
+		<!-- <plugins> -->
+		<!-- <plugin> -->
+		<!-- Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=y -->
+		<!-- tomcat7:run-war -->
+		<!-- </plugin> -->
+		<!-- </plugins> -->
+
+		<!-- </build> -->
+		<!-- </profile> -->
 	</profiles>
 </project>
