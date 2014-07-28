@@ -690,6 +690,7 @@
 						<overWriteIfNewer>true</overWriteIfNewer>
 						<!-- <excludeTransitive>false</excludeTransitive> -->
 						<includeScope>provided</includeScope>
+						<type>jar</type>
 						<transitive>true</transitive>
 						<destination>${jetspeed.tomcat.shared.lib}</destination>
 						<artifactItems>
@@ -723,6 +724,7 @@
 					<version>2.4</version>
 					<configuration>
 						<warName>jetspeed</warName>
+						<useCache>true</useCache>
 						<overlays>
 							<overlay>
 								<id>jetspeed</id>
@@ -751,6 +753,8 @@
 						</webResources>
 					</configuration>
 				</plugin>
+
+
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -776,9 +780,10 @@
 						</executions>
 						<configuration>
 							<target name="database-setup" description="Creates the database structure and inserts data into the database">
+								<!-- <dependencyfilesets prefix="mydeps." /> -->
 								<taskdef name="ddlToDatabase" classname="org.apache.ddlutils.task.DdlToDatabaseTask">
-									<classpath refid="maven.plugin.classpath" />
-									<classpath refid="maven.compile.classpath" />
+									<!-- <classpath refid="maven.plugin.classpath" /> -->
+									<!-- <classpath refid="mydeps.maven.project.dependencies" /> -->
 									<!-- <classpath refid="maven.runtime.classpath" /> -->
 								</taskdef>
 								<ddlToDatabase>
@@ -804,7 +809,7 @@
 								<artifactId>log4j</artifactId>
 								<version>1.2.17</version>
 							</dependency>
-							<!-- JDBCC DRIVERS -->
+							<!-- JDBC DRIVERS -->
 							<dependency>
 								<groupId>mysql</groupId>
 								<artifactId>mysql-connector-java</artifactId>
@@ -831,19 +836,36 @@
 			</build>
 		</profile>
 
-		<!-- <profile> -->
-<!-- <id>debug</id> -->
-		<!-- <activation> -->
-		<!-- </activation> -->
-		<!-- <build> -->
-		<!-- <plugins> -->
-		<!-- <plugin> -->
-		<!-- Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=y -->
-		<!-- tomcat7:run-war -->
-		<!-- </plugin> -->
-		<!-- </plugins> -->
-
-		<!-- </build> -->
-		<!-- </profile> -->
+		<profile>
+			<id>dev</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.7</version>
+						<executions>
+							<execution>
+								<id>sync-webapp-dir</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<target name="sync-webapp-dir" description="Synchronize Webapp directoy with exploded WAR running localy">
+								<copy todir="${project.build.directory}/${project.build.finalName}">
+									<fileset dir="${basedir}/src/main/webapp">
+										<include name="**/*.*" />
+										<exclude name="META-INF/**/*" />
+									</fileset>
+								</copy>
+							</target>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>
